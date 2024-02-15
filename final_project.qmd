@@ -1,0 +1,22 @@
+---
+title: "Public Transportation Accessibility in Twin Cities"
+author: "Tina Chen, Shirley Jiang, Cynthia Zhang"
+format: html
+editor: visual
+---
+
+```{r load data}
+library(dplyr)
+library(tidyverse)
+library(tidycensus)
+library(ggplot2)
+library(sf)
+
+rider_23 <- read.csv("ridership_2023.csv")
+```
+
+```{r data cleaning}
+date <- c("dtBookingStart", "dtWeekStart", "dtDate", "dtMonthYear")
+rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
+```
+
