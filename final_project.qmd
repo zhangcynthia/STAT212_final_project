@@ -12,11 +12,38 @@ library(tidycensus)
 library(ggplot2)
 library(sf)
 
-rider_23 <- read.csv("ridership_2023.csv")
+rider_23 <- read.csv("data/ridership_2023.csv")
 ```
 
 ```{r data cleaning}
 date <- c("dtBookingStart", "dtWeekStart", "dtDate", "dtMonthYear")
 rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
+```
+
+```{r}
+# get population and median Income for Ramsey and Hennepin area
+census2023 <- tidycensus::get_acs(
+    year = 2022,
+    state = "MN",
+    geography = "tract",
+    variables = c("B01003_001", "B19013_001"),
+    output = "wide",
+    geometry = TRUE
+) %>%
+    filter(word(NAME, 4) %in% c("Ramsey", "Hennepin")) %>%
+    mutate(
+        tract = word(NAME, 3),
+        tract = str_remove(tract, ","),
+        county = word(NAME, 4)
+    ) %>%
+    select(-NAME) %>%
+    rename(
+        "population" = "B01003_001E",
+        "medianIncome" = "B19013_001E"
+    ) %>%
+    select(-contains("_"))
+```
+```{r}
+
 ```
 
