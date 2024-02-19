@@ -13,11 +13,17 @@ library(ggplot2)
 library(sf)
 
 rider_23 <- read.csv("data/ridership_2023.csv")
+rider_19 <- read.csv("data/ridership_2019.csv")
+rider_covid <- read.csv("data/ridership_covid.csv")
+stops <- read.csv("data/stops.csv")
 ```
 
 ```{r data cleaning}
 date <- c("dtBookingStart", "dtWeekStart", "dtDate", "dtMonthYear")
 rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
+rider_19 <- rider_19 %>% mutate(across(all_of(date), as.Date))
+rider_covid <- rider_covid %>% mutate(across(all_of(date), as.Date))
+stops_sf <- st_as_sf(stops, coords = c("lon", "lat"), crs = 4269)
 ```
 
 ```{r}
@@ -43,6 +49,8 @@ census2023 <- tidycensus::get_acs(
     ) %>%
     select(-contains("_"))
 ```
+
+
 ```{r}
 
 ```
