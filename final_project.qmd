@@ -24,6 +24,7 @@ rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
 rider_19 <- rider_19 %>% mutate(across(all_of(date), as.Date))
 rider_covid <- rider_covid %>% mutate(across(all_of(date), as.Date))
 stops_sf <- st_as_sf(stops, coords = c("lon", "lat"), crs = 4269)
+
 ```
 
 ```{r}
@@ -32,7 +33,7 @@ census2023 <- tidycensus::get_acs(
     year = 2022,
     state = "MN",
     geography = "tract",
-    variables = c("B01003_001", "B19013_001"),
+    variables = c("B01003_001", "B19013_001","B02001_002","B02001_003","B02001_004","B02001_005","B02001_006","B02001_007","B02001_008"),
     output = "wide",
     geometry = TRUE
 ) %>%
@@ -45,13 +46,88 @@ census2023 <- tidycensus::get_acs(
     select(-NAME) %>%
     rename(
         "population" = "B01003_001E",
-        "medianIncome" = "B19013_001E"
+        "medianIncome" = "B19013_001E",
+        "White Alone" = "B02001_002E",
+         "Black or African American Alone" = "B02001_003E",
+         "American Indian and Alaska Native Alone" = "B02001_004E",
+         "Asian Alone" = "B02001_005E",
+         "Native Hawaiian and Other Pacific Islander Alone" = "B02001_006E",
+         "Some Other Race Alone" = "B02001_007E",
+         "Two or More Races" = "B02001_008E"
+        
     ) %>%
     select(-contains("_"))
+```
+```{r}
+name <- names(census2023)[c(-1)]
 ```
 
 
 ```{r}
+stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
+```
 
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = population))+
+geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+
+
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = medianIncome))+
+geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `White Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+```
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Black or African American Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+
+```
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `American Indian and Alaska Native Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")
+
+```
+
+
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Asian Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Native Hawaiian and Other Pacific Islander Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population", fill= "Hawaiian and Other")
+```
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Some Other Race Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "blue",size = 0.1, alpha = 0.4)+
+scale_fill_gradient(low = "orange", high = "grey")
 ```
 
