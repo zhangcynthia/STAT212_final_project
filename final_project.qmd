@@ -58,10 +58,10 @@ census2023 <- tidycensus::get_acs(
     ) %>%
     select(-contains("_"))
 ```
+
 ```{r}
 name <- names(census2023)[c(-1)]
 ```
-
 
 ```{r}
 stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
@@ -92,6 +92,7 @@ geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
 ```
+
 ```{r}
 ggplot() +
 geom_sf(data = census2023, aes(fill = `Black or African American Alone`/population))+
@@ -100,6 +101,7 @@ scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
 
 ```
+
 ```{r}
 ggplot() +
 geom_sf(data = census2023, aes(fill = `American Indian and Alaska Native Alone`/population))+
@@ -107,8 +109,6 @@ geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")
 
 ```
-
-
 
 ```{r}
 ggplot() +
@@ -124,5 +124,3 @@ geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population", fill= "Hawaiian and Other")
 ```
-
-
