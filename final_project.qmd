@@ -24,7 +24,6 @@ rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
 rider_19 <- rider_19 %>% mutate(across(all_of(date), as.Date))
 rider_covid <- rider_covid %>% mutate(across(all_of(date), as.Date))
 stops_sf <- st_as_sf(stops, coords = c("lon", "lat"), crs = 4269)
-
 ```
 
 ```{r}
@@ -58,9 +57,7 @@ census2023 <- tidycensus::get_acs(
     ) %>%
     select(-contains("_"))
 ```
-```{r}
-name <- names(census2023)[c(-1)]
-```
+
 
 
 ```{r}
@@ -81,8 +78,8 @@ labs(title = "population")
 ggplot() +
 geom_sf(data = census2023, aes(fill = medianIncome))+
 geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")+
-labs(title = "population")
+scale_fill_gradient(low = "orange", high = "blue")
+ 
 ```
 
 ```{r}
@@ -92,6 +89,7 @@ geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
 ```
+
 ```{r}
 ggplot() +
 geom_sf(data = census2023, aes(fill = `Black or African American Alone`/population))+
@@ -100,6 +98,7 @@ scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
 
 ```
+
 ```{r}
 ggplot() +
 geom_sf(data = census2023, aes(fill = `American Indian and Alaska Native Alone`/population))+
@@ -107,8 +106,6 @@ geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")
 
 ```
-
-
 
 ```{r}
 ggplot() +
@@ -121,8 +118,54 @@ scale_fill_gradient(low = "orange", high = "blue")
 ggplot() +
 geom_sf(data = census2023, aes(fill = `Native Hawaiian and Other Pacific Islander Alone`/population))+
 geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")+
-labs(title = "population", fill= "Hawaiian and Other")
+scale_fill_gradient(low = "orange", high = "blue")
 ```
 
+### Overview and Covid comparison
+
+```{r}
+table(is.na(rider_23$Revenue)) # too many NA in Revenue, not use
+used_ridership_all <- rbind(rider_23,rider_19,rider_covid) %>% select(c(3,5,6,8,10,34,35,36,40)) #combine all 
+```
+
+
+```{r demand}
+#total ridership
+used_ridership_all %>% ggplot(aes(x=nYear, y=Total_Riders))+geom_col()
+```
+
+
+```{r weekday vs weekend}
+used_ridership_all %>% 
+  filter(!(Schedule %in% c("Holiday","Reduced")))%>% 
+  mutate(Schedule = case_when(Schedule %in% c("Saturday", "Sunday")~ "Weekend", Schedule == "Weekday"~ "Weekday")) %>% 
+  group_by(nYear, Schedule) %>%
+  summarize(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  ggplot(aes(x=Schedule, y = Total_Riders, fill = factor(nYear))) +
+  geom_col(position = "dodge") 
+```
+
+```{r RouteType analysis}
+
+used_ridership_all %>% filter(!(rte_class %in% c("CommRai","SuburbL","Support"))) %>% 
+  group_by(nYear, rte_class) %>%
+  summarize(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  ggplot(aes(x=factor(nYear), y = Total_Riders, fill = factor(nYear))) +
+  geom_col(position = "dodge")+
+  facet_wrap(~rte_class)
+
+
+# BRT increase because increasing line
+used_ridership_all%>% filter(rte_class == "BRT") %>% distinct(nYear,Route) %>% group_by(nYear) %>% summarise(num_BRT = n()) %>% ggplot(aes(x =nYear, y = num_BRT))+geom_line() # the increase of BRT can replace one of the orginal line
+
+
+```
+```{r route accessbility supply}
+used_ridership_all %>% 
+  group_by(nYear) %>%
+  summarize(Daily_load = n()) %>% ggplot(aes(x=nYear, y= Daily_load))+geom_line()+geom_point()
+
+used_ridership_all %>% distinct(nYear,Route) %>% group_by(nYear) %>% 
+  summarize(nRoute = n()) %>% ggplot(aes(x=nYear, y= nRoute))+geom_line()+geom_point()
+```
 
