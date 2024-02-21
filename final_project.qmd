@@ -11,6 +11,7 @@ library(tidyverse)
 library(tidycensus)
 library(ggplot2)
 library(sf)
+library(Hmisc)
 
 rider_23 <- read.csv("data/ridership_2023.csv")
 rider_19 <- read.csv("data/ridership_2019.csv")
@@ -59,9 +60,26 @@ census2023 <- tidycensus::get_acs(
 ```
 
 
+```{r}
+name <- names(census2023)[c(-1)]
+```
+
 
 ```{r}
 stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
+
+#joining the bus stop data with the census2023 dataset
+st_crs(stops_sf_county)
+st_crs(census2023)
+
+stops_census_join <- st_join(census2023, stops_sf_county)
+
+#creating the number of bus stops subsetted by the tract, including population, medIncome, Races
+
+stops_census_join_summ <- stops_census_join %>% 
+  group_by(tract, population, medianIncome, `White Alone`, `Black or African American Alone`, `Asian Alone`, `American Indian and Alaska Native Alone`, `Native Hawaiian and Other Pacific Islander Alone`) %>% 
+  summarise(number_of_stops = n_distinct(StopID))
+
 ```
 
 ```{r}
@@ -71,6 +89,13 @@ geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
 
+# scatterplot between population variable and number of bus stops
+stops_census_join_summ %>% 
+  ggplot(aes(x = population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Population in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 
 ```
 
@@ -80,6 +105,16 @@ geom_sf(data = census2023, aes(fill = medianIncome))+
 geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")
  
+
+
+# scatterplot between median income variable and number of bus stops
+stops_census_join_summ %>% 
+  ggplot(aes(x = medianIncome, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Median Income of Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+
 ```
 
 ```{r}
@@ -88,6 +123,13 @@ geom_sf(data = census2023, aes(fill = `White Alone`/population))+
 geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `White Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of White Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 ```
 
 ```{r}
@@ -97,6 +139,12 @@ geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+
 labs(title = "population")
 
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Black or African American Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Black/African American Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 ```
 
 ```{r}
@@ -105,6 +153,12 @@ geom_sf(data = census2023, aes(fill = `American Indian and Alaska Native Alone`/
 geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")
 
+stops_census_join_summ %>% 
+  ggplot(aes(x = `American Indian and Alaska Native Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of American Indian/Alaska Native Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 ```
 
 ```{r}
@@ -112,13 +166,20 @@ ggplot() +
 geom_sf(data = census2023, aes(fill = `Asian Alone`/population))+
 geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Asian Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Asian Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 ```
 
 ```{r}
 ggplot() +
 geom_sf(data = census2023, aes(fill = `Native Hawaiian and Other Pacific Islander Alone`/population))+
 geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")
+scale_fill_gradient(low = "orange", high = "blue")+labs(fill="")
 ```
 
 ### Overview and Covid comparison
@@ -167,5 +228,17 @@ used_ridership_all %>%
 
 used_ridership_all %>% distinct(nYear,Route) %>% group_by(nYear) %>% 
   summarize(nRoute = n()) %>% ggplot(aes(x=nYear, y= nRoute))+geom_line()+geom_point()
+```
+
+```{r}
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population", fill= "Hawaiian and Other")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Native Hawaiian and Other Pacific Islander Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 ```
 
