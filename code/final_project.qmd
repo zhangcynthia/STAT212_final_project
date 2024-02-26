@@ -1,0 +1,244 @@
+---
+title: "Public Transportation Accessibility in Twin Cities"
+author: "Tina Chen, Shirley Jiang, Cynthia Zhang"
+format: html
+editor: visual
+---
+
+```{r load data}
+library(dplyr)
+library(tidyverse)
+library(tidycensus)
+library(ggplot2)
+library(sf)
+library(Hmisc)
+
+rider_23 <- read.csv("data/ridership_2023.csv")
+rider_19 <- read.csv("data/ridership_2019.csv")
+rider_covid <- read.csv("data/ridership_covid.csv")
+stops <- read.csv("data/stops.csv")
+```
+
+```{r data cleaning}
+date <- c("dtBookingStart", "dtWeekStart", "dtDate", "dtMonthYear")
+rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
+rider_19 <- rider_19 %>% mutate(across(all_of(date), as.Date))
+rider_covid <- rider_covid %>% mutate(across(all_of(date), as.Date))
+stops_sf <- st_as_sf(stops, coords = c("lon", "lat"), crs = 4269)
+```
+
+```{r}
+# get population and median Income for Ramsey and Hennepin area
+census2023 <- tidycensus::get_acs(
+    year = 2022,
+    state = "MN",
+    geography = "tract",
+    variables = c("B01003_001", "B19013_001","B02001_002","B02001_003","B02001_004","B02001_005","B02001_006","B02001_007","B02001_008"),
+    output = "wide",
+    geometry = TRUE
+) %>%
+    filter(word(NAME, 4) %in% c("Ramsey", "Hennepin")) %>%
+    mutate(
+        tract = word(NAME, 3),
+        tract = str_remove(tract, ","),
+        county = word(NAME, 4)
+    ) %>%
+    select(-NAME) %>%
+    rename(
+        "population" = "B01003_001E",
+        "medianIncome" = "B19013_001E",
+        "White Alone" = "B02001_002E",
+         "Black or African American Alone" = "B02001_003E",
+         "American Indian and Alaska Native Alone" = "B02001_004E",
+         "Asian Alone" = "B02001_005E",
+         "Native Hawaiian and Other Pacific Islander Alone" = "B02001_006E",
+         "Some Other Race Alone" = "B02001_007E",
+         "Two or More Races" = "B02001_008E"
+        
+    ) %>%
+    select(-contains("_"))
+```
+
+
+```{r}
+name <- names(census2023)[c(-1)]
+```
+
+
+```{r}
+stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
+
+#joining the bus stop data with the census2023 dataset
+st_crs(stops_sf_county)
+st_crs(census2023)
+
+stops_census_join <- st_join(census2023, stops_sf_county)
+
+#creating the number of bus stops subsetted by the tract, including population, medIncome, Races
+
+stops_census_join_summ <- stops_census_join %>% 
+  group_by(tract, population, medianIncome, `White Alone`, `Black or African American Alone`, `Asian Alone`, `American Indian and Alaska Native Alone`, `Native Hawaiian and Other Pacific Islander Alone`) %>% 
+  summarise(number_of_stops = n_distinct(StopID))
+
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = population))+
+geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+
+# scatterplot between population variable and number of bus stops
+stops_census_join_summ %>% 
+  ggplot(aes(x = population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Population in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = medianIncome))+
+geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")
+ 
+
+
+# scatterplot between median income variable and number of bus stops
+stops_census_join_summ %>% 
+  ggplot(aes(x = medianIncome, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Median Income of Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `White Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `White Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of White Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Black or African American Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Black or African American Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Black/African American Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `American Indian and Alaska Native Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `American Indian and Alaska Native Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of American Indian/Alaska Native Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Asian Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Asian Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Asian Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+```
+
+```{r}
+ggplot() +
+geom_sf(data = census2023, aes(fill = `Native Hawaiian and Other Pacific Islander Alone`/population))+
+geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
+scale_fill_gradient(low = "orange", high = "blue")+labs(fill="")
+```
+
+### Overview and Covid comparison
+
+```{r}
+table(is.na(rider_23$Revenue)) # too many NA in Revenue, not use
+used_ridership_all <- rbind(rider_23,rider_19,rider_covid) %>% select(c(3,5,6,8,10,34,35,36,40)) #combine all 
+```
+
+
+```{r demand}
+#total ridership
+used_ridership_all %>% ggplot(aes(x=nYear, y=Total_Riders))+geom_col()
+```
+
+
+```{r weekday vs weekend}
+used_ridership_all %>% 
+  filter(!(Schedule %in% c("Holiday","Reduced")))%>% 
+  mutate(Schedule = case_when(Schedule %in% c("Saturday", "Sunday")~ "Weekend", Schedule == "Weekday"~ "Weekday")) %>% 
+  group_by(nYear, Schedule) %>%
+  summarize(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  ggplot(aes(x=Schedule, y = Total_Riders, fill = factor(nYear))) +
+  geom_col(position = "dodge") 
+```
+
+```{r RouteType analysis}
+
+used_ridership_all %>% filter(!(rte_class %in% c("CommRai","SuburbL","Support"))) %>% 
+  group_by(nYear, rte_class) %>%
+  summarize(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  ggplot(aes(x=factor(nYear), y = Total_Riders, fill = factor(nYear))) +
+  geom_col(position = "dodge")+
+  facet_wrap(~rte_class)
+
+
+# BRT increase because increasing line
+used_ridership_all%>% filter(rte_class == "BRT") %>% distinct(nYear,Route) %>% group_by(nYear) %>% summarise(num_BRT = n()) %>% ggplot(aes(x =nYear, y = num_BRT))+geom_line() # the increase of BRT can replace one of the orginal line
+
+
+```
+```{r route accessbility supply}
+used_ridership_all %>% 
+  group_by(nYear) %>%
+  summarize(Daily_load = n()) %>% ggplot(aes(x=nYear, y= Daily_load))+geom_line()+geom_point()
+
+used_ridership_all %>% distinct(nYear,Route) %>% group_by(nYear) %>% 
+  summarize(nRoute = n()) %>% ggplot(aes(x=nYear, y= nRoute))+geom_line()+geom_point()
+```
+
+```{r}
+scale_fill_gradient(low = "orange", high = "blue")+
+labs(title = "population", fill= "Hawaiian and Other")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Native Hawaiian and Other Pacific Islander Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
+```
+
