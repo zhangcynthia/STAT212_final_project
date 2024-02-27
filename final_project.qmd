@@ -59,11 +59,9 @@ census2023 <- tidycensus::get_acs(
     select(-contains("_"))
 ```
 
-
 ```{r}
 name <- names(census2023)[c(-1)]
 ```
-
 
 ```{r}
 stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
@@ -189,19 +187,17 @@ table(is.na(rider_23$Revenue)) # too many NA in Revenue, not use
 used_ridership_all <- rbind(rider_23,rider_19,rider_covid) %>% select(c(3,5,6,8,10,34,35,36,40)) #combine all 
 ```
 
-
 ```{r demand}
 #total ridership
 used_ridership_all %>% ggplot(aes(x=nYear, y=Total_Riders))+geom_col()
 ```
 
-
 ```{r weekday vs weekend}
 used_ridership_all %>% 
   filter(!(Schedule %in% c("Holiday","Reduced")))%>% 
-  mutate(Schedule = case_when(Schedule %in% c("Saturday", "Sunday")~ "Weekend", Schedule == "Weekday"~ "Weekday")) %>% 
+  mutate(Schedule = case_when(Schedule %in% c("Saturday", "Sunday") ~ "Weekend", Schedule == "Weekday"~ "Weekday")) %>% 
   group_by(nYear, Schedule) %>%
-  summarize(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
   ggplot(aes(x=Schedule, y = Total_Riders, fill = factor(nYear))) +
   geom_col(position = "dodge") 
 ```
@@ -210,7 +206,7 @@ used_ridership_all %>%
 
 used_ridership_all %>% filter(!(rte_class %in% c("CommRai","SuburbL","Support"))) %>% 
   group_by(nYear, rte_class) %>%
-  summarize(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
   ggplot(aes(x=factor(nYear), y = Total_Riders, fill = factor(nYear))) +
   geom_col(position = "dodge")+
   facet_wrap(~rte_class)
@@ -221,19 +217,17 @@ used_ridership_all%>% filter(rte_class == "BRT") %>% distinct(nYear,Route) %>% g
 
 
 ```
+
 ```{r route accessbility supply}
 used_ridership_all %>% 
   group_by(nYear) %>%
-  summarize(Daily_load = n()) %>% ggplot(aes(x=nYear, y= Daily_load))+geom_line()+geom_point()
+  mutate(Daily_load = n()) %>% ggplot(aes(x=nYear, y= Daily_load))+geom_line()+geom_point()
 
 used_ridership_all %>% distinct(nYear,Route) %>% group_by(nYear) %>% 
-  summarize(nRoute = n()) %>% ggplot(aes(x=nYear, y= nRoute))+geom_line()+geom_point()
+  mutate(nRoute = n()) %>% ggplot(aes(x=nYear, y= nRoute))+geom_line()+geom_point()
 ```
 
 ```{r}
-scale_fill_gradient(low = "orange", high = "blue")+
-labs(title = "population", fill= "Hawaiian and Other")
-
 stops_census_join_summ %>% 
   ggplot(aes(x = `Native Hawaiian and Other Pacific Islander Alone`/population, y = number_of_stops))+
     geom_point()+
@@ -241,4 +235,3 @@ stops_census_join_summ %>%
     labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
     theme_classic()
 ```
-
