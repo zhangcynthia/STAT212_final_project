@@ -1,6 +1,4 @@
-data/
-.DS_Store (a hidden Mac file)
-.Rhistory
 .Rproj.user
-*.Rproj
-.quarto/
+.Rhistory
+.RData
+.Ruserdata
