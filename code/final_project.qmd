@@ -13,10 +13,10 @@ library(ggplot2)
 library(sf)
 library(Hmisc)
 
-rider_23 <- read.csv("data/ridership_2023.csv")
-rider_19 <- read.csv("data/ridership_2019.csv")
-rider_covid <- read.csv("data/ridership_covid.csv")
-stops <- read.csv("data/stops.csv")
+rider_23 <- read.csv("../data/ridership_2023.csv")
+rider_19 <- read.csv("../data/ridership_2019.csv")
+rider_covid <- read.csv("../data/ridership_covid.csv")
+stops <- read.csv("../data/stops.csv")
 ```
 
 ```{r data cleaning}
@@ -59,11 +59,9 @@ census2023 <- tidycensus::get_acs(
     select(-contains("_"))
 ```
 
-
 ```{r}
 name <- names(census2023)[c(-1)]
 ```
-
 
 ```{r}
 stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
@@ -189,12 +187,10 @@ table(is.na(rider_23$Revenue)) # too many NA in Revenue, not use
 used_ridership_all <- rbind(rider_23,rider_19,rider_covid) %>% select(c(3,5,6,8,10,34,35,36,40)) #combine all 
 ```
 
-
 ```{r demand}
 #total ridership
 used_ridership_all %>% ggplot(aes(x=nYear, y=Total_Riders))+geom_col()
 ```
-
 
 ```{r weekday vs weekend}
 used_ridership_all %>% 
@@ -221,6 +217,7 @@ used_ridership_all%>% filter(rte_class == "BRT") %>% distinct(nYear,Route) %>% g
 
 
 ```
+
 ```{r route accessbility supply}
 used_ridership_all %>% 
   group_by(nYear) %>%
@@ -241,4 +238,3 @@ stops_census_join_summ %>%
     labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
     theme_classic()
 ```
-
