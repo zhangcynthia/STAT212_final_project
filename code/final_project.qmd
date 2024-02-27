@@ -235,3 +235,8 @@ stops_census_join_summ %>%
     labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
     theme_classic()
 ```
+
+```{r}
+sessionInfo()
+```
+
