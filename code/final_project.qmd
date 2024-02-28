@@ -5,6 +5,8 @@ format: html
 editor: visual
 ---
 
+### Cleaning and Setting Up Data
+
 ```{r load data}
 library(dplyr)
 library(tidyverse)
@@ -17,6 +19,8 @@ rider_23 <- read.csv("../data/ridership_2023.csv")
 rider_19 <- read.csv("../data/ridership_2019.csv")
 rider_covid <- read.csv("../data/ridership_covid.csv")
 stops <- read.csv("../data/stops.csv")
+first_schools <- st_read("../data/shp_struc_school_program_locs/")
+second_schools <- st_read("../data/shp_society_post_second_enroll/")
 ```
 
 ```{r data cleaning}
@@ -78,7 +82,30 @@ stops_census_join_summ <- stops_census_join %>%
   group_by(tract, population, medianIncome, `White Alone`, `Black or African American Alone`, `Asian Alone`, `American Indian and Alaska Native Alone`, `Native Hawaiian and Other Pacific Islander Alone`) %>% 
   summarise(number_of_stops = n_distinct(StopID))
 
+#joining the education data to the main dataset
+first_schools <- first_schools %>% 
+  st_transform(crs = st_crs(stops_census_join_summ))
+second_schools <- second_schools %>% 
+  st_transform(crs = st_crs(stops_census_join_summ))
+
+education_pt1 <- st_join(stops_census_join_summ, first_schools) %>% filter(COUNTYNAME %in% c("Ramsey", "Hennepin"))
+
+education_final <- st_join(education_pt1, second_schools) %>% filter(COUNTYNAME %in% c("Ramsey", "Hennepin"))
+education_final <- education_final %>% select(tract, geometry, GISNAME, GISADDR, LOCDISTNAM, COUNTYNAME, number_of_stops)
+duplicate_rows3 <- duplicated(education_final$GISADDR)
+unique_education <- education_final[!duplicate_rows, ]
+
+
+# Number of schools per tract & then reference to the number of stops
+schools_stops <- unique_education %>% 
+  group_by(tract, number_of_stops) %>% 
+  summarise(number_school = n_distinct(GISNAME))
+
+
+## COUNT BY THE NUMBER OF SCHOOLS IN THE TRACT AND THEN THE NUMBER OF STOPS ##
 ```
+
+### Based on Income & Population Size
 
 ```{r}
 ggplot() +
@@ -102,7 +129,6 @@ ggplot() +
 geom_sf(data = census2023, aes(fill = medianIncome))+
 geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")
- 
 
 
 # scatterplot between median income variable and number of bus stops
@@ -114,6 +140,29 @@ stops_census_join_summ %>%
     theme_classic()
 
 ```
+
+### Mapping the Education Sources in Twin Cities
+
+```{r}
+schools_stops %>% 
+  ggplot(aes(x = number_school, y = number_of_stops))+
+  stat_summary_bin(fun = "mean", bins = 10, geom = "point")+ #divides the number of schools by the number of bins, so Bin 1: 0-10 schools, Bin 2: 10:20, etc. 
+  # geom_point(alpha = 0.5)+
+  geom_smooth(method = "lm")+
+  labs(x = "Mean Number of Schools (Pre and Post-Secondary) in Tract", y = "Mean Number of Bus Stops in Tract")+ #average number of bus stops in areas with similar numbers of schools
+  theme_classic()
+
+schools_stops %>% 
+  ggplot(aes(x = number_school, y = number_of_stops))+
+  geom_point(alpha = 0.5)+
+  geom_smooth(method = "lm")+
+  labs(x = "Number of Schools (Pre and Post-Secondary) in Tract", y = "Number of Bus Stops in Tract")+ 
+  theme_classic()
+
+
+```
+
+### Based on Ethnicity
 
 ```{r}
 ggplot() +
@@ -178,6 +227,13 @@ ggplot() +
 geom_sf(data = census2023, aes(fill = `Native Hawaiian and Other Pacific Islander Alone`/population))+
 geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
 scale_fill_gradient(low = "orange", high = "blue")+labs(fill="")
+
+stops_census_join_summ %>% 
+  ggplot(aes(x = `Native Hawaiian and Other Pacific Islander Alone`/population, y = number_of_stops))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
+    theme_classic()
 ```
 
 ### Overview and Covid comparison
@@ -228,15 +284,5 @@ used_ridership_all %>% distinct(nYear,Route) %>% group_by(nYear) %>%
 ```
 
 ```{r}
-stops_census_join_summ %>% 
-  ggplot(aes(x = `Native Hawaiian and Other Pacific Islander Alone`/population, y = number_of_stops))+
-    geom_point()+
-    geom_smooth(method = "lm")+
-    labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
-    theme_classic()
-```
-
-```{r}
 sessionInfo()
 ```
-
