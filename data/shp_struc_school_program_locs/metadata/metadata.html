@@ -1,0 +1,418 @@
+<html lang="en"><head><META http-equiv="Content-Type" content="text/html; charset=utf-16"><font face="calibri"><title> 
+					Metadata: School Program Locations, Minnesota, SY2023-24</title></font><meta name="viewport" content="width=device-width, initial-scale=1.0"><style type="text/css">
+				body {
+					color: #000020;
+					background-color: #FFFFFF;
+				}
+				h1 {
+				}
+				.center {
+					text-align: center;
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				div.box {
+					margin-left: 1em;
+				}
+				div.hide {
+					display: none;
+				}
+				div.show {
+					display: block;
+				}
+				span.hide {
+					display: none;
+				}
+				span.show {
+					display: inline-block;
+				}
+				.backToTop a {
+					color: #DDDDDD;
+					font-style: italic;
+					font-size: 0.85em;
+					}
+				.head {
+					font-size: 1.3em;
+				}
+				a:link {
+					color: #098EA6;
+					font-weight: normal;
+					text-decoration: none;
+				}
+				a:visited {
+					color: #098EA6;
+					text-decoration: none;
+				}
+				a:link:hover, a:visited:hover {
+					color: #007799;
+					background-color: #C6E6EF;
+				}
+				 a:focus, a:hover {
+				   background-color: #C6E6EF;
+				   text-decoration: none
+				 }
+				h2 {
+					background: #dfdbcf;
+					padding: 0px 0px 0px 10px;
+				}
+				h2 a {
+				}
+				h3 {
+				}
+				tr {
+					vertical-align: top;
+					border: 1px solid black;
+				}
+				th {
+					text-align: left;
+					background: #dddddd;
+					vertical-align: bottom;
+				}
+				td {
+					color: black;
+					vertical-align: top;
+					border: 1px solid black;
+				}
+					td.description {
+					background: white;
+				}
+				div.mgmgel {
+					padding: 5px 0px 0px 10px;
+                    display: table;
+					font-size: 1em;
+                }
+                div.mgmgel span:nth-child(1){
+					display: table-cell;
+					width: 30%;
+					font-weight: bold;
+                }
+				@media(min-width:600px){
+					div.mgmgel span:nth-child(1){width: 300px}
+				}
+                div.mgmgel span:nth-child(2){
+					display: table-cell;
+                }
+				.unused {
+					color:787862;
+				}
+				table {
+					margin: 0px 10px 0px 10px;
+					border: 1px solid black;
+					font-size: .9em;
+				}
+				div.smallish {
+					font-size: .8em;
+					color:939393;
+				}
+			</style></head><body><font face="calibri"><div class="mgmg"><A name="thetop"></A><center><h1>School Program Locations, Minnesota, SY2023-24</h1></center><div class="smallish"><center>
+						This page last updated:
+						01/24/2024</center><center>
+						Metadata created using <A href="https://www.mngeo.state.mn.us/committee/standards/mgmg/metadata.htm">Minnesota Geographic Metadata Guidelines</A></center></div><BR><HR><span>Go to Section:</span><BR><ol><li><a href="#Identification_Information">Overview</a></li><li><a href="#Data_Quality_Information">Data Quality</a></li><li class="unused">Data Organization</li><li><a href="#Spatial_Reference_Information">Coordinate System</a></li><li><a href="#Entity_and_Attribute_Information">Attributes</a></li><li><a href="#Distribution_Information">Distribution</a> - <a href="#ordering"><font color="#B40404">Get Data</font></a></li><li><a href="#Metadata_Reference_Information">Metadata Reference</a></li></ol><h2><A NAME="Identification_Information"></A>
+					Section 1: Overview
+				</h2><div class="mgmgel"><span>Originator:</span><span>Minnesota Department of Education</span></div><br><div class="mgmgel"><span>
+						Title: 
+					</span><span>School Program Locations, Minnesota, SY2023-24</span></div><br><div class="mgmgel"><span>
+						Abstract: 
+					</span><span>This dataset attempts to represent the point locations of every educational program in the state of Minnesota that is currently operational and reporting to the Minnesota Department of Education. It can be used to identify schools, various individual school programs, school districts (by office location), colleges, and libraries, among other programs. Please note that not all school programs are statutorily required to report, and many types of programs can be reported at any time of the year, so this dataset is by nature an incomplete snapshot in time.
+<br>
+<br>Maintenance of these locations are a result of an ongoing project to identify current school program locations where Food and Nutrition Services Office (FNS) programs are utilized. The FNS Office is in the Minnesota Department of Education (MDE). GIS staff at MDE maintain the dataset using school program and physical addresses provided by local education authorities (LEAs) for an MDE database called "MDE ORG". MDE GIS staff track weekly changes to program locations, along with comprehensive reviews each summer. All records have been reviewed for accuracy or edited at least once since January 1, 2020.
+<br>
+<br>Note that there may remain errors due to the number of program locations and inconsistency in reporting from LEAs and other organizations. In particular, some organization types (such as colleges and treatment programs) are not subject to annual reporting requirements, so some records included in this file may in fact be inactive or moved to a different location.
+<br>
+<br>Note that multiple programs may occur at the same location and are represented as separate records. For example, a junior and a senior high school may be in the same building, but each has a separate record in the data layer. Users can make use of the "CLASS" and "ORGTYPE" attributes to filter and sort records according to their needs. In general, records at the same physical address will be located at the same coordinates.
+<br>
+<br>This data is now available in CSV format. For that format only, OBJECTID and Shape columns are removed, and the Shape column is replaced by Latitude and Longitude columns.<br></span></div><br><div class="mgmgel"><span>
+						Purpose: 
+					</span><span>The purpose of this layer is to provide location information for educational programs operating within the state of Minnesota. These locations are used by MDE to help identify where appropriate funds should be used for that school year. Note that since multiple programs may operate within the same building (at the same address), this dataset is not particularly useful as a "school building" dataset. Some, but not all, public school buildings are represented as discrete records in the related struc-school-buildings dataset.</span></div><br><div class="mgmgel"><span>
+						Time Period of Content Date:
+					</span><span>11/01/2023</span></div><br><div class="mgmgel"><span>
+						Currentness Reference: 
+					</span><span>Updated annually for the school year identified in the title.</span></div><br><div class="mgmgel"><span>
+						Progress: 
+					</span><span>Complete</span></div><br><div class="mgmgel"><span>
+						Maintenance and Update Frequency:
+					</span><span>Annually</span></div><br><div class="mgmgel"><span>
+						Spatial Extent of Data:  
+					</span><span>Minnesota</span></div><br><div class="mgmgel"><span>
+						Bounding Coordinates:  
+					</span><span>-97.250680<br>-89.597207<br>49.372570<br>43.444465</span></div><br><div class="mgmgel"><span>
+						Place Keywords:
+					</span><span>Minnesota, MN</span></div><br><div class="mgmgel"><span>
+						Theme Keywords:
+					</span><span>structure, school, schools, public school, nonpublic school, non-public school, charter school, public school district office, library, libraries, educational program, college, university, school program, school programs</span></div><br><div class="mgmgel"><span>
+						Theme Keyword Thesaurus: 
+					</span><span>ISO 19115 Topic Category</span></div><br><div class="mgmgel"><span>
+						Access Constraints:
+					</span><span>None</span></div><br><div class="mgmgel"><span>
+						Use Constraints:
+					</span><span>In obtaining this data from MDE and MnGeo, it is understood that you and/or your organization have the right to use it for any purpose.  If you modify it, you are encouraged to apply responsible best practices by documenting those changes in a metadata record.  If you transmit or provide the data to another user, it is your responsibility to provide appropriate content, limitation, warranty and liability information as you see fit.</span></div><br><div class="mgmgel"><span>
+						Contact Person Information: 
+					</span><span>Mike Dolbow,
+							GIS Coordinator<br>Minnesota Department of Education<br>400 NE Stinson Blvd<br>Minneapolis,
+							MN&nbsp;
+							55413<br>
+							Phone: 651-582-8789<br>
+							Email: <A href="mailto:mike.dolbow@state.mn.us">mike.dolbow@state.mn.us</A></span></div><br><div class="mgmgel"><span>
+						Browse Graphic:  
+					</span><span><A href="https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_mde/struc_school_program_locs/metadata/preview.jpg">Click to view a data sample</A>.
+								<br><br></span></div><br><div class="mgmgel"><span>
+						Associated Data Sets:
+					</span><span>bdry_school_district_boundaries, struc-school-buildings</span></div><br><h2><a name="Data_Quality_Information"></a>
+					Section 2: Data Quality
+				</h2><div class="mgmgel"><span>
+						Attribute Accuracy: 
+					</span><span>Several checks are performed manually, such as comparing addresses in the GIS data against the physical addresses in MDE ORG. Other attributes, such as GRADERANGE, CLASS, and WEB_URL, were derived from MDE ORG via SQL queries in order to include the most recent data reported to MDE by Minnesota School Districts, Charter Schools, and other educational organizations.</span></div><br><div class="mgmgel"><span>
+						Logical Consistency:
+					</span><span>Not applicable</span></div><br><div class="mgmgel"><span>
+						Completeness:
+					</span><span>School program locations in Minnesota.</span></div><br><div class="mgmgel"><span>
+						Horizontal Positional Accuracy:
+					</span><span>Each school district checks the previous year's map for accuracy of school names, district boundaries and public school building locations. Locations are modified through a weekly process of reviewing updated program physical addresses against various sources (aerial photography, geocoding).
+<br>
+<br>All other school locations (charters, nonpublic, post-secondary, etc.) were brought forward from database records at MDE and spatially located using address matching techniques and most current aerial photography. All locations have been reviewed or edited at least once since January 1, 2020. Each review uses various sources to determine location accuracy, such as address information, online mapping platforms, geocoding, aerial photography, county parcel and address data, commercial and publicly provided basemap layers, and reviews of program websites. Most records have been verified against multiple sources when determining the horizontal position.
+<br>
+<br>In determining the precise location for each record, the following decision criteria were used:
+<br>1. Programs using the same physical address are co-located. (Note that some large buildings will be referenced with multiple building numbers in the address, and that some specific addresses are used to reference multiple buildings.)
+<br>2. A program "point" is placed within a parcel with the same address number (if that exists). If none exists, the remaining rules are still followed.
+<br>3. A point is placed on top of the building footprint (if visible).
+<br>4. A point is placed closest to the street with a matching name to the address, if possible within the other rules.
+<br>
+<br>Since it is impossible to meet all of these rules for every record, some subjectivity exists in the placement of points.</span></div><br><div class="mgmgel"><span>
+								Vertical Positional Accuracy:
+							</span><span>NA</span></div><br><div class="mgmgel"><span>
+						Lineage:
+					</span><span>For the lineage of this dataset from prior years, refer to the metadata packaged with the historical resource offerings in the MN Geospatial Commons.
+<br>
+<br>As an approximation of the change for the current school year, the following statistics are provided:
+<br>1,314 records have been updated since January 1, 2023.
+<br>85 records have been created since January 1, 2023.</span></div><br><h2 class="unused"><a name="Spatial_Data_Organization_Information"></a>
+					Section 3: Spatial Data Organization (not used in this metadata)
+				</h2><br><h2><a name="Spatial_Reference_Information"></a>
+					Section 4: Coordinate System
+				</h2><div class="mgmgel"><span>
+						Horizontal Coordinate Scheme:
+					</span><span>Universal Transverse Mercator</span></div><br><div class="mgmgel"><span>
+							UTM Zone Number:
+						</span><span>15</span></div><br><div class="mgmgel"><span>
+						Horizontal Datum:
+					</span><span>NAD83</span></div><br><div class="mgmgel"><span>
+						Horizontal Units:
+					</span><span>meters</span></div><br><div class="mgmgel"><span>
+						Vertical Datum:
+					</span><span>not applicable</span></div><br><div class="mgmgel"><span>
+						Vertical Units:
+					</span><span></span></div><br><div class="mgmgel"><span>
+						Depth Datum:
+					</span><span>not applicable</span></div><br><div class="mgmgel"><span>
+						Depth Units:
+					</span><span></span></div><br><h2><a name="Entity_and_Attribute_Information"></a>
+					Section 5: Attributes
+				</h2><div class="mgmgel"><span>
+						Overview:
+					</span><span>List of columns via a sample record:
+<br>OBJECTID: 2061
+<br>ORGID: 10625357000
+<br>ORGTYPE: 01
+<br>ORGNUMBER: 0625
+<br>SCHNUMBER: 357
+<br>FORMID: 0625-01-357
+<br>GISNAME: E-STEM Middle School
+<br>MDENAME: E-STEM Middle School
+<br>ALTNAME: <Null>
+<br>GISADDR: 600 Weir Dr, Woodbury, MN 55125
+<br>MDEADDR: 600 Weir Drive, Woodbury, MN 55125
+<br>PUBPRIV: Public
+<br>LOCTYPE: Member
+<br>GRADERANGE: 45085
+<br>CLASS: 20
+<br>MAGNET: NO
+<br>LOCDISTID: 10833000000
+<br>LOCDISTNAME: South Washington County
+<br>COUNTYCODE: 27163
+<br>COUNTYNAME: Washington
+<br>FED_SCHNUM: 273384005210
+<br>WEB_URL: <a target="_blank" href="http://spps.org&#xD;">http://spps.org
+</a><br>YEAR: SY2023-24
+<br>CREATEDT: 2018-10-01
+<br>UPDATEDT: 2021-09-27
+<br>
+<br>Details on selected individual columns:
+<br>
+<br>ORGID: A unique identifier for the program/location, used by MDE in internal databases. This is a numeric representation of the ORGTYPE, ORGNUMBER, and SCHNUMBER columns, followed at the end by '000'.
+<br>  example:  1 0001 002 000 is Rippleside Elementary
+<br>  example:   89 8016 010 000 is Aitkin Public Library
+<br>(Spaces are used in the above examples for readability; spaces are not used in the data itself.)
+<br>
+<br>ORGTYPE: MDE Organization Classification, derived from MDE ORG database. Left-padded with a zero for a 2-character representation. Code reference:
+<br>  01 - Independent districts
+<br>  02 - Common districts
+<br>  03 - Special Districts (Minneapolis and South St. Paul only)
+<br>  04 - Technical college
+<br>  06 - Intermediate districts and Schools
+<br>  07 - Charter school
+<br>  08 - MDE multi-district school designation
+<br>  21 - Community colleges
+<br>  22 - State universities
+<br>  23 - University of Minnesota system
+<br>  24 - Private colleges
+<br>  25 - Community/Technical Colleges
+<br>  31 - Nonpublic School in Independent Districts
+<br>  32 - Nonpublic School in Common Districts
+<br>  33 - Nonpublic School in Special Districts
+<br>  34 - Bureau of Indian Affairs (BIA) Tribal Schools
+<br>  36 - NonPublic Archdiocese
+<br>  50 - Miscellaneous Cooperatives
+<br>  51 - Vocational Cooperatives
+<br>  52 - Special Education Cooperatives
+<br>  60 - Correctional Facilities
+<br>  61 - Education Districts
+<br>  62 - Secondary Facilities Cooperatives
+<br>  70 - State Operated Schools
+<br>  75 - Residential Facilities-Neglected/Delinquent
+<br>  80 - Adult Basic Education (ABE)
+<br>  82 - Regional Mgmt Information Center-RMIC
+<br>  83 - Service Cooperative-ECSU
+<br>  86 - Library Minitex Location
+<br>  88 - Library Network/Cooperative
+<br>  89 - Library
+<br>
+<br>ORGNUMBER: MDE school district (or other organization) number, derived from MDE ORG database. Left-padded with zeroes for a 4-character representation.
+<br>
+<br>SCHNUMBER: MDE school number (or other member identifier), derived from MDE ORG database. Left-padded with zeroes for a 3-character representation.
+<br>
+<br>FORMID: A concatenation of ORGNUMBER, ORGTYPE, and SCHNUMBER, separated by dashes. This is a "formatted ID" that can be used to look up the location details in the MDE ORG reporting pages.
+<br>
+<br>GISNAME: School name stored in the spatial database. Once a school is established in the database, this is generally a simplification or a more detailed description of the school, depending on which makes the record more unique. Schools that have changed names since being established in the spatial database are not always updated in this column, although annual synching is attempted. In some cases this name is an abbreviation used for ease in map labeling.
+<br>
+<br>MDENAME: "Preferred" school name stored in the MDE ORG database. This data is updated more frequently, but is complementary to SCHNAME. For example, ORGIDNUM 10912051000 has a preferred name of merely "ESY" in MDE ORG, but the spatial database provides a more unique description as "Milaca ESY".
+<br>
+<br>ALTNAME	: a column for storage of alternate names. Particularly useful when labeling school district offices with the short name for the school district, or libraries with a shorter name.
+<br>
+<br>GISADDR: a concatenation of the ADDRESS, CITY, and ZIP columns from the spatial database (with a static "MN" inserted for geocoding/mailing purposes). Much like GISNAME vs. MDENAME, the address data stored with the spatial database may be better, worse, or just different than what is stored in MDE ORG.
+<br>
+<br>MDEADDR: a similar concatenation of address fields, but from the MDE ORG database (using physical address information where available). Note that mailing addresses are stored separately in the MDE ORG database, and not reflected in this dataset.
+<br>
+<br>PUBPRIV: a classification intended to demonstrate whether a program is public, or nonpublic/private
+<br>   Private or Nonpublic - All locations with ORGTYPE IN (24,31,32,33,36)
+<br>   Public - All other locations (ORGTYPE NOT IN (24,31,32,33,36))
+<br>
+<br>LOCTYPE: a classification intended to demonstrate whether or not a location is the "Head" (Parent) record, such as a school district or charter office, or a "Member" (Child) record, such as an individual school program location. These designations reflect the SCHNUMBER column (000 vs non-zero), serving as a vehicle for more general categorization.
+<br>
+<br>Some common uses of the above columns include:
+<br>
+<br>1. School district offices have "000000" at the end of the ORGID column because they represent the Head record for schools within the district. Examples include Minneapolis (30001000000), Fridley (10013000000) or St. Paul (10625000000). Public district offices can be isolated with a query of: ORGTYPE IN ('01', '02', '03') and SCHNUMBER = '000'.
+<br>
+<br>2. Charter schools - Charters are their own local education authority (LEA), operating much like a district. Therefore, there is a "Head" location for each charter license carrying the "000000" at the end of the ORGID column. There may be 2, 3, 4 or more locations based on the charter but there will always be 1 record for each charter organization and at least 1 record for a campus/school. The charters may also be housed on a single location or in several locations. To query a unique list of all Charter school organizations, query ORGTYPE = '07' And SCHNUMBER = '000'.
+<br>
+<br>If you want all charter school campus locations, even when there are multiples per charter, then query ORGTYPE = '07' And SCHNUMBER <> '000'
+<br>
+<br>GRADERANGE: Grade levels pulled from the MDE ORG database. There is wide variation within this column, and should not be used to "classify" different types of schools. (See the CLASS column.) Some examples:
+<br>   EC - Early Childhood Program
+<br>   PK - Pre-Kindergarten
+<br>   KG - Kindergarten
+<br>   1 to 12 - Grades 1 to 12
+<br>
+<br>CLASS: MDE school site classification, pulled from the MDE ORG database. Available for general classifications.
+<br>    0,' ', or Blank - No site classification; generally in "Head" records, nonpublic records, or records where the organization type is not a school district.
+<br>   10 - Elem (PK-6)
+<br>   20 - Midd (5-8)
+<br>   31 - Junior High (7-8 or 7-9)
+<br>   32 - Senior High (9-12)
+<br>   33 - Secondary (7-12)
+<br>   40 - Elem/Sec Combo
+<br>   41 - ALC
+<br>   42 - ALP
+<br>   43 - Private Alternative Program
+<br>   45 - Targeted Services
+<br>   46 - Distance Learning
+<br>   50 - Special Education
+<br>   51 - Special Education ESY
+<br>   55 - Combined Spec Ed * Voc Ed Programs
+<br>   60 - Secondary Vocational Program
+<br>   70 - Delinquent Student/Correctional Program
+<br>   71 - Miscellaneous Program
+<br>   72 - Neglected Student Program, Title 1
+<br>   73 - Homeless Student Program, Title 1
+<br>   74 - Hospital/Medical Program
+<br>   75 - Telecommunications District
+<br>   76 - Educational Oversight to Private Res Care
+<br>   77 - Educational Oversight to Public Res Care
+<br>   78 - Educational Oversight to Private Day Treatment
+<br>   79 - Educational Oversight to Public Day Treatment
+<br>   82 - Community & Adult Education Program
+<br>Note that because nonpublic schools are not classified with this column, there is no way to discretely identify "nonpublic elementary schools".
+<br>
+<br>MAGNET: Magnet school (YES/NO)
+<br>
+<br>LOCDISTID: Unique MDE ORG number for the school district within which the program is located. This is derived by location, and for public, non-charter schools, will typically reflect the ORGID of the school district, although there are exceptions. This identifier can be useful for queries such as, "how many nonpublic schools operate within district X?"
+<br>
+<br>LOCDISTNAME: School district name within which the program is located; like LOCDISTID, this is derived via location.
+<br>
+<br>COUNTYCODE:  State standard, 5-digit County FIPS codes, derived from where the program site is located.
+<br>
+<br>COUNTYNAME: County name, derived from where the program site is located.
+<br>
+<br>FED_SCHNUM: National Center for Educational Statistics (NCES) school identification number. The first 2 digits are Minnesota's state number (27). The next 5 digits are the District school designation. This will be the same for each school in that district. The final 5 numbers are the school identifier. Note that these identifiers do NOT align with MDE's organization identifiers.
+<br>
+<br>Example: Aitkin School District
+<br>   Office              01 0001 000 000  FED_SCHNUM=27 02760              (2702760)
+<br>   Aitkin Sec.      01 0001 001 000  FED_SCHNUM=27 02760 00057   (270276000057)
+<br>   Rippleside El.  01 0001 002 000  FED_SCHNUM=27 02760 00059   (270276000059)
+<br>
+<br>   City Academy Charter  (District)  01 4000 000 000 FED_SCHNUM=27 08955             (2708955)
+<br>   City Academy Charter  (School)  01 4000 010 000 FED_SCHNUM=27 08955 00016  (270895500016)
+<br>
+<br>WEB_URL: website address for the school/district, derived from MDE ORG database
+<br>
+<br>YEAR: School year of data.
+<br>
+<br>CREATEDT: date program location was entered in the database (system generated).
+<br>
+<br>UPDATEDT: date program location was last updated in the database (system generated).</span></div><br><div class="mgmgel"><span>
+						Detailed Citation:
+					</span><span>More information on data derived from MDE ORG, including reference data on organization types and school site classification, are available at <a target="_blank" href="https://public.education.mn.gov/MdeOrgView/">https://public.education.mn.gov/MdeOrgView/</a></span></div><br><div class="mgmgel"><span>
+						Table Detail:
+					</span></div><h2><a name="Distribution_Information"></a>
+					Section 6: Distribution
+				</h2><div class="mgmgel"><span>
+						Publisher:
+					</span><span>Minnesota Department of Education</span></div><br><div class="mgmgel"><span>
+						Publication Date:
+					</span><span>11/01/2023</span></div><br><div class="mgmgel"><span>
+						Contact Person Information:
+					</span><span>Data Specialists,
+							Analytics Team<br>Minnesota Department of Education<br>400 NE Stinson Blvd<br>Minneapolis,
+							MN&nbsp;
+							55413<br>
+							Phone: 651-582-8200<br>
+							Email: <A href="mailto:mde.analytics@state.mn.us">mde.analytics@state.mn.us</A></span></div><br><div class="mgmgel"><span>
+						Distributor's Data Set Identifier:
+					</span><span>school_program_locations</span></div><br><div class="mgmgel"><span>
+						Distribution Liability:
+					</span><span>The Minnesota Department of Education (MDE) does not warrant the results you may obtain by using this dataset. This dataset is provided ''as is'' without express or implied warranties, including warranties of merchantability and fitness. In no event will MDE be liable for any consequential, incidental or special damages, including any lost profits or lost savings, even if an MDE  representative has been advised of the possibility of such damages or any other claim by any third party.
+<br>
+<br>In obtaining this data from MDE and MnGeo, it is understood that you and/or your organization have the right to use it for any purpose.  If you modify it, you are encouraged to apply responsible best practices by documenting those changes in a metadata record.  If you transmit or provide the data to another user, it is your responsibility to provide appropriate content, limitation, warranty and liability information as you see fit.
+<br>
+<br>MnGeo's disclaimer is online:  <a target="_blank" href="https://www.mngeo.state.mn.us/chouse/disclaimer.html">https://www.mngeo.state.mn.us/chouse/disclaimer.html</a></span></div><br><div class="mgmgel"><span><a name="ordering"></a>
+						Ordering Instructions:
+					</span><span>The GIS data and maps are distributed on the internet by clicking below after Online Linkage.</span></div><br><div class="mgmgel"><span><font color="#B40404">Online Linkage:</font></span><span><A href="https://gisdata.mn.gov/dataset/struc-school-program-locs"> I AGREE</A>
+											to the notice in "Distribution Liability" above. Clicking to agree will either begin the download process, link to a service, or provide more instructions. See "Ordering Instructions" above for details.
+								</span></div><br><h2><a name="Metadata_Reference_Information"></a>
+					Section 7: Metadata Reference
+				</h2><div class="mgmgel"><span>
+						Metadata Date:
+					</span><span>01/24/2024</span></div><br><div class="mgmgel"><span>
+						Contact Person Information:
+					</span><span>Mike Dolbow,
+						GIS Coordinator<br>Minnesota Department of Education<br>400 NE Stinson Blvd<br>Minneapolis,
+						MN&nbsp;
+						55413<br>
+						Phone: 651-582-8789<br>
+						Email: <A href="mailto:mike.dolbow@state.mn.us">mike.dolbow@state.mn.us</A></span></div><br><div class="mgmgel"><span>
+						Metadata Standard Name:
+					</span><span>Minnesota Geographic Metadata Guidelines</span></div><br><div class="mgmgel"><span>
+						Metadata Standard Version:
+					</span><span>1.2</span></div><br><div class="mgmgel"><span>
+						Metadata Standard Online Linkage:
+					</span><span><A TARGET="viewer" HREF="https://www.mngeo.state.mn.us/committee/standards/mgmg/metadata.htm">https://www.mngeo.state.mn.us/committee/standards/mgmg/metadata.htm</A></span></div><br><p></p><hr><div class="smallish"> This page last updated:
+				01/24/2024<br><A HREF="#Top"> Go back to top</A><p></p><em class="unused">Created with <a href="https://github.com/MetropolitanCouncil/MME">MGMG stylesheet</a> version 2017.04.25.1</em></div></div></font></body></html>

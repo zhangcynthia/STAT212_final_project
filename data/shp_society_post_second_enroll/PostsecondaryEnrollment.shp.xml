@@ -1,0 +1,722 @@
+<metadata xml:lang="en">
+	<Esri>
+		<CreaDate>20211007</CreaDate>
+		<CreaTime>16330300</CreaTime>
+		<ArcGISFormat>1.0</ArcGISFormat>
+		<SyncOnce>FALSE</SyncOnce>
+		<DataProperties>
+			<lineage>
+				<Process ToolSource="c:\program files (x86)\arcgis\desktop10.7\ArcToolbox\Toolboxes\Data Management Tools.tbx\DeleteField" Date="20211007" Time="163303">DeleteField PostsecondaryEnrollment STFIP;NMCNTY;CBSA;NMCBSA;CBSATYPE;CSA;NMCSA;NECTA;NMNECTA;CD;SLDL;SLDU;SCHOOLYEAR;UNITID_1</Process>
+				<Process ToolSource="c:\program files (x86)\arcgis\desktop10.7\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20211008" Time="073937">FeatureClassToFeatureClass N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp K:\Default.gdb PostsecondaryEnrollment # "UNITID "UNITID" true true false 8 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,UNITID,-1,-1;NAME "NAME" true true false 93 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,NAME,-1,-1;STREET "STREET" true true false 73 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,STREET,-1,-1;CITY "CITY" true true false 24 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,CITY,-1,-1;STATE "STATE" true true false 2 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,STATE,-1,-1;ZIP "ZIP" true true false 10 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,ZIP,-1,-1;CNTY "CNTY" true true false 5 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,CNTY,-1,-1;LAT "LAT" true true false 10 Double 6 9 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,LAT,-1,-1;LON "LON" true true false 11 Double 6 10 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,LON,-1,-1;EFALEVEL "EFALEVEL" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFALEVEL,-1,-1;LINE "LINE" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,LINE,-1,-1;SECTION1 "SECTION1" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,SECTION1,-1,-1;LSTUDY "LSTUDY" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,LSTUDY,-1,-1;XEFTOTLT "XEFTOTLT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFTOTLT,-1,-1;EFTOTLT "EFTOTLT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFTOTLT,-1,-1;XEFTOTLM "XEFTOTLM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFTOTLM,-1,-1;EFTOTLM "EFTOTLM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFTOTLM,-1,-1;XEFTOTLW "XEFTOTLW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFTOTLW,-1,-1;EFTOTLW "EFTOTLW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFTOTLW,-1,-1;XEFAIANT "XEFAIANT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFAIANT,-1,-1;EFAIANT "EFAIANT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFAIANT,-1,-1;XEFAIANM "XEFAIANM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFAIANM,-1,-1;EFAIANM "EFAIANM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFAIANM,-1,-1;XEFAIANW "XEFAIANW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFAIANW,-1,-1;EFAIANW "EFAIANW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFAIANW,-1,-1;XEFASIAT "XEFASIAT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFASIAT,-1,-1;EFASIAT "EFASIAT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFASIAT,-1,-1;XEFASIAM "XEFASIAM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFASIAM,-1,-1;EFASIAM "EFASIAM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFASIAM,-1,-1;XEFASIAW "XEFASIAW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFASIAW,-1,-1;EFASIAW "EFASIAW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFASIAW,-1,-1;XEFBKAAT "XEFBKAAT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFBKAAT,-1,-1;EFBKAAT "EFBKAAT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFBKAAT,-1,-1;XEFBKAAM "XEFBKAAM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFBKAAM,-1,-1;EFBKAAM "EFBKAAM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFBKAAM,-1,-1;XEFBKAAW "XEFBKAAW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFBKAAW,-1,-1;EFBKAAW "EFBKAAW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFBKAAW,-1,-1;XEFHISPT "XEFHISPT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFHISPT,-1,-1;EFHISPT "EFHISPT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFHISPT,-1,-1;XEFHISPM "XEFHISPM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFHISPM,-1,-1;EFHISPM "EFHISPM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFHISPM,-1,-1;XEFHISPW "XEFHISPW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFHISPW,-1,-1;EFHISPW "EFHISPW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFHISPW,-1,-1;XEFNHPIT "XEFNHPIT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFNHPIT,-1,-1;EFNHPIT "EFNHPIT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFNHPIT,-1,-1;XEFNHPIM "XEFNHPIM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFNHPIM,-1,-1;EFNHPIM "EFNHPIM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFNHPIM,-1,-1;XEFNHPIW "XEFNHPIW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFNHPIW,-1,-1;EFNHPIW "EFNHPIW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFNHPIW,-1,-1;XEFWHITT "XEFWHITT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFWHITT,-1,-1;EFWHITT "EFWHITT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFWHITT,-1,-1;XEFWHITM "XEFWHITM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFWHITM,-1,-1;EFWHITM "EFWHITM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFWHITM,-1,-1;XEFWHITW "XEFWHITW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFWHITW,-1,-1;EFWHITW "EFWHITW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFWHITW,-1,-1;XEF2MORT "XEF2MORT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEF2MORT,-1,-1;EF2MORT "EF2MORT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EF2MORT,-1,-1;XEF2MORM "XEF2MORM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEF2MORM,-1,-1;EF2MORM "EF2MORM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EF2MORM,-1,-1;XEF2MORW "XEF2MORW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEF2MORW,-1,-1;EF2MORW "EF2MORW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EF2MORW,-1,-1;XEFUNKNT "XEFUNKNT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFUNKNT,-1,-1;EFUNKNT "EFUNKNT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFUNKNT,-1,-1;XEFUNKNM "XEFUNKNM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFUNKNM,-1,-1;EFUNKNM "EFUNKNM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFUNKNM,-1,-1;XEFUNKNW "XEFUNKNW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFUNKNW,-1,-1;EFUNKNW "EFUNKNW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFUNKNW,-1,-1;XEFNRALT "XEFNRALT" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFNRALT,-1,-1;EFNRALT "EFNRALT" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFNRALT,-1,-1;XEFNRALM "XEFNRALM" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFNRALM,-1,-1;EFNRALM "EFNRALM" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFNRALM,-1,-1;XEFNRALW "XEFNRALW" true true false 254 Text 0 0 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,XEFNRALW,-1,-1;EFNRALW "EFNRALW" true true false 16 Double 6 15 ,First,#,N:\CommDev\Research\Public\GIS\Jon\PostsecondaryEnrollment.shp,EFNRALW,-1,-1" #</Process>
+				<Process ToolSource="c:\program files (x86)\arcgis\desktop10.7\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20211008" Time="080029">FeatureClassToFeatureClass K:\Default.gdb\PostsecondaryEnrollment K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb PostsecondaryEnrollment # "UNITID "UNITID" true true false 8 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,UNITID,-1,-1;NAME "NAME" true true false 93 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,NAME,-1,-1;STREET "STREET" true true false 73 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,STREET,-1,-1;CITY "CITY" true true false 24 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,CITY,-1,-1;STATE "STATE" true true false 2 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,STATE,-1,-1;ZIP "ZIP" true true false 10 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,ZIP,-1,-1;CNTY "CNTY" true true false 5 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,CNTY,-1,-1;LAT "LAT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,LAT,-1,-1;LON "LON" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,LON,-1,-1;EFALEVEL "EFALEVEL" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFALEVEL,-1,-1;LINE "LINE" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,LINE,-1,-1;SECTION1 "SECTION1" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,SECTION1,-1,-1;LSTUDY "LSTUDY" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,LSTUDY,-1,-1;XEFTOTLT "XEFTOTLT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFTOTLT,-1,-1;EFTOTLT "EFTOTLT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFTOTLT,-1,-1;XEFTOTLM "XEFTOTLM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFTOTLM,-1,-1;EFTOTLM "EFTOTLM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFTOTLM,-1,-1;XEFTOTLW "XEFTOTLW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFTOTLW,-1,-1;EFTOTLW "EFTOTLW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFTOTLW,-1,-1;XEFAIANT "XEFAIANT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFAIANT,-1,-1;EFAIANT "EFAIANT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFAIANT,-1,-1;XEFAIANM "XEFAIANM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFAIANM,-1,-1;EFAIANM "EFAIANM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFAIANM,-1,-1;XEFAIANW "XEFAIANW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFAIANW,-1,-1;EFAIANW "EFAIANW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFAIANW,-1,-1;XEFASIAT "XEFASIAT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFASIAT,-1,-1;EFASIAT "EFASIAT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFASIAT,-1,-1;XEFASIAM "XEFASIAM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFASIAM,-1,-1;EFASIAM "EFASIAM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFASIAM,-1,-1;XEFASIAW "XEFASIAW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFASIAW,-1,-1;EFASIAW "EFASIAW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFASIAW,-1,-1;XEFBKAAT "XEFBKAAT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFBKAAT,-1,-1;EFBKAAT "EFBKAAT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFBKAAT,-1,-1;XEFBKAAM "XEFBKAAM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFBKAAM,-1,-1;EFBKAAM "EFBKAAM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFBKAAM,-1,-1;XEFBKAAW "XEFBKAAW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFBKAAW,-1,-1;EFBKAAW "EFBKAAW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFBKAAW,-1,-1;XEFHISPT "XEFHISPT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFHISPT,-1,-1;EFHISPT "EFHISPT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFHISPT,-1,-1;XEFHISPM "XEFHISPM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFHISPM,-1,-1;EFHISPM "EFHISPM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFHISPM,-1,-1;XEFHISPW "XEFHISPW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFHISPW,-1,-1;EFHISPW "EFHISPW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFHISPW,-1,-1;XEFNHPIT "XEFNHPIT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFNHPIT,-1,-1;EFNHPIT "EFNHPIT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFNHPIT,-1,-1;XEFNHPIM "XEFNHPIM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFNHPIM,-1,-1;EFNHPIM "EFNHPIM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFNHPIM,-1,-1;XEFNHPIW "XEFNHPIW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFNHPIW,-1,-1;EFNHPIW "EFNHPIW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFNHPIW,-1,-1;XEFWHITT "XEFWHITT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFWHITT,-1,-1;EFWHITT "EFWHITT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFWHITT,-1,-1;XEFWHITM "XEFWHITM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFWHITM,-1,-1;EFWHITM "EFWHITM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFWHITM,-1,-1;XEFWHITW "XEFWHITW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFWHITW,-1,-1;EFWHITW "EFWHITW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFWHITW,-1,-1;XEF2MORT "XEF2MORT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEF2MORT,-1,-1;EF2MORT "EF2MORT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EF2MORT,-1,-1;XEF2MORM "XEF2MORM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEF2MORM,-1,-1;EF2MORM "EF2MORM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EF2MORM,-1,-1;XEF2MORW "XEF2MORW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEF2MORW,-1,-1;EF2MORW "EF2MORW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EF2MORW,-1,-1;XEFUNKNT "XEFUNKNT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFUNKNT,-1,-1;EFUNKNT "EFUNKNT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFUNKNT,-1,-1;XEFUNKNM "XEFUNKNM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFUNKNM,-1,-1;EFUNKNM "EFUNKNM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFUNKNM,-1,-1;XEFUNKNW "XEFUNKNW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFUNKNW,-1,-1;EFUNKNW "EFUNKNW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFUNKNW,-1,-1;XEFNRALT "XEFNRALT" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFNRALT,-1,-1;EFNRALT "EFNRALT" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFNRALT,-1,-1;XEFNRALM "XEFNRALM" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFNRALM,-1,-1;EFNRALM "EFNRALM" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFNRALM,-1,-1;XEFNRALW "XEFNRALW" true true false 254 Text 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,XEFNRALW,-1,-1;EFNRALW "EFNRALW" true true false 8 Double 0 0 ,First,#,K:\Default.gdb\PostsecondaryEnrollment,EFNRALW,-1,-1" #</Process>
+				<Process ToolSource="c:\program files (x86)\arcgis\desktop10.7\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20211008" Time="080404">FeatureClassToFeatureClass K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment L:\GDRS\STAGE\society_post_second_enroll\fgdb\society_post_second_enroll.gdb PostsecondaryEnrollment # "UNITID "UNITID" true true false 8 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,UNITID,-1,-1;NAME "NAME" true true false 93 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,NAME,-1,-1;STREET "STREET" true true false 73 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,STREET,-1,-1;CITY "CITY" true true false 24 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,CITY,-1,-1;STATE "STATE" true true false 2 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,STATE,-1,-1;ZIP "ZIP" true true false 10 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,ZIP,-1,-1;CNTY "CNTY" true true false 5 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,CNTY,-1,-1;LAT "LAT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,LAT,-1,-1;LON "LON" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,LON,-1,-1;EFALEVEL "EFALEVEL" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFALEVEL,-1,-1;LINE "LINE" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,LINE,-1,-1;SECTION1 "SECTION1" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,SECTION1,-1,-1;LSTUDY "LSTUDY" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,LSTUDY,-1,-1;XEFTOTLT "XEFTOTLT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFTOTLT,-1,-1;EFTOTLT "EFTOTLT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFTOTLT,-1,-1;XEFTOTLM "XEFTOTLM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFTOTLM,-1,-1;EFTOTLM "EFTOTLM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFTOTLM,-1,-1;XEFTOTLW "XEFTOTLW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFTOTLW,-1,-1;EFTOTLW "EFTOTLW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFTOTLW,-1,-1;XEFAIANT "XEFAIANT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFAIANT,-1,-1;EFAIANT "EFAIANT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFAIANT,-1,-1;XEFAIANM "XEFAIANM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFAIANM,-1,-1;EFAIANM "EFAIANM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFAIANM,-1,-1;XEFAIANW "XEFAIANW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFAIANW,-1,-1;EFAIANW "EFAIANW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFAIANW,-1,-1;XEFASIAT "XEFASIAT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFASIAT,-1,-1;EFASIAT "EFASIAT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFASIAT,-1,-1;XEFASIAM "XEFASIAM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFASIAM,-1,-1;EFASIAM "EFASIAM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFASIAM,-1,-1;XEFASIAW "XEFASIAW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFASIAW,-1,-1;EFASIAW "EFASIAW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFASIAW,-1,-1;XEFBKAAT "XEFBKAAT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFBKAAT,-1,-1;EFBKAAT "EFBKAAT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFBKAAT,-1,-1;XEFBKAAM "XEFBKAAM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFBKAAM,-1,-1;EFBKAAM "EFBKAAM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFBKAAM,-1,-1;XEFBKAAW "XEFBKAAW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFBKAAW,-1,-1;EFBKAAW "EFBKAAW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFBKAAW,-1,-1;XEFHISPT "XEFHISPT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFHISPT,-1,-1;EFHISPT "EFHISPT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFHISPT,-1,-1;XEFHISPM "XEFHISPM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFHISPM,-1,-1;EFHISPM "EFHISPM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFHISPM,-1,-1;XEFHISPW "XEFHISPW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFHISPW,-1,-1;EFHISPW "EFHISPW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFHISPW,-1,-1;XEFNHPIT "XEFNHPIT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFNHPIT,-1,-1;EFNHPIT "EFNHPIT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFNHPIT,-1,-1;XEFNHPIM "XEFNHPIM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFNHPIM,-1,-1;EFNHPIM "EFNHPIM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFNHPIM,-1,-1;XEFNHPIW "XEFNHPIW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFNHPIW,-1,-1;EFNHPIW "EFNHPIW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFNHPIW,-1,-1;XEFWHITT "XEFWHITT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFWHITT,-1,-1;EFWHITT "EFWHITT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFWHITT,-1,-1;XEFWHITM "XEFWHITM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFWHITM,-1,-1;EFWHITM "EFWHITM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFWHITM,-1,-1;XEFWHITW "XEFWHITW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFWHITW,-1,-1;EFWHITW "EFWHITW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFWHITW,-1,-1;XEF2MORT "XEF2MORT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEF2MORT,-1,-1;EF2MORT "EF2MORT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EF2MORT,-1,-1;XEF2MORM "XEF2MORM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEF2MORM,-1,-1;EF2MORM "EF2MORM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EF2MORM,-1,-1;XEF2MORW "XEF2MORW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEF2MORW,-1,-1;EF2MORW "EF2MORW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EF2MORW,-1,-1;XEFUNKNT "XEFUNKNT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFUNKNT,-1,-1;EFUNKNT "EFUNKNT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFUNKNT,-1,-1;XEFUNKNM "XEFUNKNM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFUNKNM,-1,-1;EFUNKNM "EFUNKNM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFUNKNM,-1,-1;XEFUNKNW "XEFUNKNW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFUNKNW,-1,-1;EFUNKNW "EFUNKNW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFUNKNW,-1,-1;XEFNRALT "XEFNRALT" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFNRALT,-1,-1;EFNRALT "EFNRALT" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFNRALT,-1,-1;XEFNRALM "XEFNRALM" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFNRALM,-1,-1;EFNRALM "EFNRALM" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFNRALM,-1,-1;XEFNRALW "XEFNRALW" true true false 254 Text 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,XEFNRALW,-1,-1;EFNRALW "EFNRALW" true true false 8 Double 0 0 ,First,#,K:\data_devel\SDEupdate\20211008_PostsecondaryEnrollment\New\new_PostsecondaryEnrollment.gdb\PostsecondaryEnrollment,EFNRALW,-1,-1" #</Process>
+				<Process ToolSource="C:\program files\arcgis\server\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20211008" Time="234443">FeatureClassToFeatureClass /var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment /var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\shp PostsecondaryEnrollment.shp # "UNITID "UNITID" true true false 8 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,UNITID,-1,-1;NAME "NAME" true true false 93 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,NAME,-1,-1;STREET "STREET" true true false 73 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,STREET,-1,-1;CITY "CITY" true true false 24 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,CITY,-1,-1;STATE "STATE" true true false 2 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,STATE,-1,-1;ZIP "ZIP" true true false 10 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,ZIP,-1,-1;CNTY "CNTY" true true false 5 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,CNTY,-1,-1;LAT "LAT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,LAT,-1,-1;LON "LON" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,LON,-1,-1;EFALEVEL "EFALEVEL" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFALEVEL,-1,-1;LINE "LINE" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,LINE,-1,-1;SECTION1 "SECTION1" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,SECTION1,-1,-1;LSTUDY "LSTUDY" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,LSTUDY,-1,-1;XEFTOTLT "XEFTOTLT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFTOTLT,-1,-1;EFTOTLT "EFTOTLT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFTOTLT,-1,-1;XEFTOTLM "XEFTOTLM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFTOTLM,-1,-1;EFTOTLM "EFTOTLM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFTOTLM,-1,-1;XEFTOTLW "XEFTOTLW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFTOTLW,-1,-1;EFTOTLW "EFTOTLW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFTOTLW,-1,-1;XEFAIANT "XEFAIANT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFAIANT,-1,-1;EFAIANT "EFAIANT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFAIANT,-1,-1;XEFAIANM "XEFAIANM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFAIANM,-1,-1;EFAIANM "EFAIANM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFAIANM,-1,-1;XEFAIANW "XEFAIANW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFAIANW,-1,-1;EFAIANW "EFAIANW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFAIANW,-1,-1;XEFASIAT "XEFASIAT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFASIAT,-1,-1;EFASIAT "EFASIAT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFASIAT,-1,-1;XEFASIAM "XEFASIAM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFASIAM,-1,-1;EFASIAM "EFASIAM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFASIAM,-1,-1;XEFASIAW "XEFASIAW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFASIAW,-1,-1;EFASIAW "EFASIAW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFASIAW,-1,-1;XEFBKAAT "XEFBKAAT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFBKAAT,-1,-1;EFBKAAT "EFBKAAT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFBKAAT,-1,-1;XEFBKAAM "XEFBKAAM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFBKAAM,-1,-1;EFBKAAM "EFBKAAM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFBKAAM,-1,-1;XEFBKAAW "XEFBKAAW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFBKAAW,-1,-1;EFBKAAW "EFBKAAW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFBKAAW,-1,-1;XEFHISPT "XEFHISPT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFHISPT,-1,-1;EFHISPT "EFHISPT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFHISPT,-1,-1;XEFHISPM "XEFHISPM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFHISPM,-1,-1;EFHISPM "EFHISPM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFHISPM,-1,-1;XEFHISPW "XEFHISPW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFHISPW,-1,-1;EFHISPW "EFHISPW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFHISPW,-1,-1;XEFNHPIT "XEFNHPIT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFNHPIT,-1,-1;EFNHPIT "EFNHPIT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFNHPIT,-1,-1;XEFNHPIM "XEFNHPIM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFNHPIM,-1,-1;EFNHPIM "EFNHPIM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFNHPIM,-1,-1;XEFNHPIW "XEFNHPIW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFNHPIW,-1,-1;EFNHPIW "EFNHPIW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFNHPIW,-1,-1;XEFWHITT "XEFWHITT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFWHITT,-1,-1;EFWHITT "EFWHITT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFWHITT,-1,-1;XEFWHITM "XEFWHITM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFWHITM,-1,-1;EFWHITM "EFWHITM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFWHITM,-1,-1;XEFWHITW "XEFWHITW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFWHITW,-1,-1;EFWHITW "EFWHITW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFWHITW,-1,-1;XEF2MORT "XEF2MORT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEF2MORT,-1,-1;EF2MORT "EF2MORT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EF2MORT,-1,-1;XEF2MORM "XEF2MORM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEF2MORM,-1,-1;EF2MORM "EF2MORM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EF2MORM,-1,-1;XEF2MORW "XEF2MORW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEF2MORW,-1,-1;EF2MORW "EF2MORW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EF2MORW,-1,-1;XEFUNKNT "XEFUNKNT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFUNKNT,-1,-1;EFUNKNT "EFUNKNT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFUNKNT,-1,-1;XEFUNKNM "XEFUNKNM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFUNKNM,-1,-1;EFUNKNM "EFUNKNM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFUNKNM,-1,-1;XEFUNKNW "XEFUNKNW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFUNKNW,-1,-1;EFUNKNW "EFUNKNW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFUNKNW,-1,-1;XEFNRALT "XEFNRALT" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFNRALT,-1,-1;EFNRALT "EFNRALT" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFNRALT,-1,-1;XEFNRALM "XEFNRALM" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFNRALM,-1,-1;EFNRALM "EFNRALM" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFNRALM,-1,-1;XEFNRALW "XEFNRALW" true true false 254 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,XEFNRALW,-1,-1;EFNRALW "EFNRALW" true true false 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_metc\society_post_second_enroll\fgdb\society_post_second_enroll.gdb\PostsecondaryEnrollment,EFNRALW,-1,-1" #</Process>
+			</lineage>
+			<itemProps>
+				<itemName Sync="TRUE">PostsecondaryEnrollment</itemName>
+				<imsContentType Sync="TRUE">002</imsContentType>
+				<itemLocation>
+					<linkage Sync="TRUE">file://\\g46palgdrftp001\Z\var\ftp\gdrs_temp\update\us_mn_state_metc\society_post_second_enroll\shp\PostsecondaryEnrollment.shp</linkage>
+					<protocol Sync="TRUE">Local Area Network</protocol>
+				</itemLocation>
+				<itemSize Sync="TRUE">0.000</itemSize>
+			</itemProps>
+			<coordRef>
+				<type Sync="TRUE">Geographic</type>
+				<geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn>
+				<csUnits Sync="TRUE">Angular Unit: Degree (0.017453)</csUnits>
+				<peXml Sync="TRUE">&lt;GeographicCoordinateSystem xsi:type='typens:GeographicCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.4'&gt;&lt;WKT&gt;GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433],AUTHORITY[&amp;quot;EPSG&amp;quot;,4269]]&lt;/WKT&gt;&lt;XOrigin&gt;-400&lt;/XOrigin&gt;&lt;YOrigin&gt;-400&lt;/YOrigin&gt;&lt;XYScale&gt;11258999068426.238&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;8.9831528411952133e-009&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;LeftLongitude&gt;-180&lt;/LeftLongitude&gt;&lt;WKID&gt;4269&lt;/WKID&gt;&lt;LatestWKID&gt;4269&lt;/LatestWKID&gt;&lt;/GeographicCoordinateSystem&gt;</peXml>
+			</coordRef>
+		</DataProperties>
+		<SyncDate>20211008</SyncDate>
+		<SyncTime>23444300</SyncTime>
+		<ModDate>20211008</ModDate>
+		<ModTime>23444300</ModTime>
+	</Esri>
+	<dataIdInfo>
+		<envirDesc Sync="TRUE">Microsoft Windows XP Professional x64 Edition Version 5.2 (Build 3790) Service Pack 2; Esri ArcGIS 10.4.1.5686</envirDesc>
+		<dataLang>
+			<languageCode value="en" Sync="TRUE"/>
+			<countryCode value="US" Sync="TRUE"/>
+		</dataLang>
+		<idCitation>
+			<resTitle Sync="TRUE">PostsecondaryEnrollment</resTitle>
+			<presForm>
+				<PresFormCd value="005" Sync="TRUE"/>
+			</presForm>
+		</idCitation>
+		<spatRpType>
+			<SpatRepTypCd value="001" Sync="TRUE"/>
+		</spatRpType>
+	</dataIdInfo>
+	<mdLang>
+		<languageCode value="en" Sync="TRUE"/>
+		<countryCode value="US" Sync="TRUE"/>
+	</mdLang>
+	<distInfo>
+		<distFormat>
+			<formatName Sync="TRUE">Shapefile</formatName>
+		</distFormat>
+		<distTranOps>
+			<transSize Sync="TRUE">0.000</transSize>
+		</distTranOps>
+	</distInfo>
+	<mdHrLv>
+		<ScopeCd value="005" Sync="TRUE"/>
+	</mdHrLv>
+	<mdHrLvName Sync="TRUE">dataset</mdHrLvName>
+	<refSysInfo>
+		<RefSystem>
+			<refSysID>
+				<identCode code="4269" Sync="TRUE"/>
+				<idCodeSpace Sync="TRUE">EPSG</idCodeSpace>
+				<idVersion Sync="TRUE">6.12(3.0.1)</idVersion>
+			</refSysID>
+		</RefSystem>
+	</refSysInfo>
+	<spatRepInfo>
+		<VectSpatRep>
+			<geometObjs Name="PostsecondaryEnrollment">
+				<geoObjTyp>
+					<GeoObjTypCd value="004" Sync="TRUE"/>
+				</geoObjTyp>
+				<geoObjCnt Sync="TRUE">0</geoObjCnt>
+			</geometObjs>
+			<topLvl>
+				<TopoLevCd value="001" Sync="TRUE"/>
+			</topLvl>
+		</VectSpatRep>
+	</spatRepInfo>
+	<spdoinfo>
+		<ptvctinf>
+			<esriterm Name="PostsecondaryEnrollment">
+				<efeatyp Sync="TRUE">Simple</efeatyp>
+				<efeageom code="1" Sync="TRUE"/>
+				<esritopo Sync="TRUE">FALSE</esritopo>
+				<efeacnt Sync="TRUE">0</efeacnt>
+				<spindex Sync="TRUE">FALSE</spindex>
+				<linrefer Sync="TRUE">FALSE</linrefer>
+			</esriterm>
+		</ptvctinf>
+	</spdoinfo>
+	<eainfo>
+		<detailed Name="PostsecondaryEnrollment">
+			<enttyp>
+				<enttypl Sync="TRUE">PostsecondaryEnrollment</enttypl>
+				<enttypt Sync="TRUE">Feature Class</enttypt>
+				<enttypc Sync="TRUE">0</enttypc>
+			</enttyp>
+			<attr>
+				<attrlabl Sync="TRUE">FID</attrlabl>
+				<attalias Sync="TRUE">FID</attalias>
+				<attrtype Sync="TRUE">OID</attrtype>
+				<attwidth Sync="TRUE">4</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Internal feature number.</attrdef>
+				<attrdefs Sync="TRUE">Esri</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">Shape</attrlabl>
+				<attalias Sync="TRUE">Shape</attalias>
+				<attrtype Sync="TRUE">Geometry</attrtype>
+				<attwidth Sync="TRUE">0</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Feature geometry.</attrdef>
+				<attrdefs Sync="TRUE">Esri</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Coordinates defining the features.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">UNITID</attrlabl>
+				<attalias Sync="TRUE">UNITID</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">8</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">NAME</attrlabl>
+				<attalias Sync="TRUE">NAME</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">93</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">STREET</attrlabl>
+				<attalias Sync="TRUE">STREET</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">73</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">CITY</attrlabl>
+				<attalias Sync="TRUE">CITY</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">24</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">STATE</attrlabl>
+				<attalias Sync="TRUE">STATE</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">2</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">ZIP</attrlabl>
+				<attalias Sync="TRUE">ZIP</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">CNTY</attrlabl>
+				<attalias Sync="TRUE">CNTY</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">5</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">LAT</attrlabl>
+				<attalias Sync="TRUE">LAT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">LON</attrlabl>
+				<attalias Sync="TRUE">LON</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFALEVEL</attrlabl>
+				<attalias Sync="TRUE">EFALEVEL</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">LINE</attrlabl>
+				<attalias Sync="TRUE">LINE</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">SECTION1</attrlabl>
+				<attalias Sync="TRUE">SECTION1</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">LSTUDY</attrlabl>
+				<attalias Sync="TRUE">LSTUDY</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFTOTLT</attrlabl>
+				<attalias Sync="TRUE">XEFTOTLT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFTOTLT</attrlabl>
+				<attalias Sync="TRUE">EFTOTLT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFTOTLM</attrlabl>
+				<attalias Sync="TRUE">XEFTOTLM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFTOTLM</attrlabl>
+				<attalias Sync="TRUE">EFTOTLM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFTOTLW</attrlabl>
+				<attalias Sync="TRUE">XEFTOTLW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFTOTLW</attrlabl>
+				<attalias Sync="TRUE">EFTOTLW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFAIANT</attrlabl>
+				<attalias Sync="TRUE">XEFAIANT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFAIANT</attrlabl>
+				<attalias Sync="TRUE">EFAIANT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFAIANM</attrlabl>
+				<attalias Sync="TRUE">XEFAIANM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFAIANM</attrlabl>
+				<attalias Sync="TRUE">EFAIANM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFAIANW</attrlabl>
+				<attalias Sync="TRUE">XEFAIANW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFAIANW</attrlabl>
+				<attalias Sync="TRUE">EFAIANW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFASIAT</attrlabl>
+				<attalias Sync="TRUE">XEFASIAT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFASIAT</attrlabl>
+				<attalias Sync="TRUE">EFASIAT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFASIAM</attrlabl>
+				<attalias Sync="TRUE">XEFASIAM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFASIAM</attrlabl>
+				<attalias Sync="TRUE">EFASIAM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFASIAW</attrlabl>
+				<attalias Sync="TRUE">XEFASIAW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFASIAW</attrlabl>
+				<attalias Sync="TRUE">EFASIAW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFBKAAT</attrlabl>
+				<attalias Sync="TRUE">XEFBKAAT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFBKAAT</attrlabl>
+				<attalias Sync="TRUE">EFBKAAT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFBKAAM</attrlabl>
+				<attalias Sync="TRUE">XEFBKAAM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFBKAAM</attrlabl>
+				<attalias Sync="TRUE">EFBKAAM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFBKAAW</attrlabl>
+				<attalias Sync="TRUE">XEFBKAAW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFBKAAW</attrlabl>
+				<attalias Sync="TRUE">EFBKAAW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFHISPT</attrlabl>
+				<attalias Sync="TRUE">XEFHISPT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFHISPT</attrlabl>
+				<attalias Sync="TRUE">EFHISPT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFHISPM</attrlabl>
+				<attalias Sync="TRUE">XEFHISPM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFHISPM</attrlabl>
+				<attalias Sync="TRUE">EFHISPM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFHISPW</attrlabl>
+				<attalias Sync="TRUE">XEFHISPW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFHISPW</attrlabl>
+				<attalias Sync="TRUE">EFHISPW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFNHPIT</attrlabl>
+				<attalias Sync="TRUE">XEFNHPIT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFNHPIT</attrlabl>
+				<attalias Sync="TRUE">EFNHPIT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFNHPIM</attrlabl>
+				<attalias Sync="TRUE">XEFNHPIM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFNHPIM</attrlabl>
+				<attalias Sync="TRUE">EFNHPIM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFNHPIW</attrlabl>
+				<attalias Sync="TRUE">XEFNHPIW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFNHPIW</attrlabl>
+				<attalias Sync="TRUE">EFNHPIW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFWHITT</attrlabl>
+				<attalias Sync="TRUE">XEFWHITT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFWHITT</attrlabl>
+				<attalias Sync="TRUE">EFWHITT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFWHITM</attrlabl>
+				<attalias Sync="TRUE">XEFWHITM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFWHITM</attrlabl>
+				<attalias Sync="TRUE">EFWHITM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFWHITW</attrlabl>
+				<attalias Sync="TRUE">XEFWHITW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFWHITW</attrlabl>
+				<attalias Sync="TRUE">EFWHITW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEF2MORT</attrlabl>
+				<attalias Sync="TRUE">XEF2MORT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EF2MORT</attrlabl>
+				<attalias Sync="TRUE">EF2MORT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEF2MORM</attrlabl>
+				<attalias Sync="TRUE">XEF2MORM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EF2MORM</attrlabl>
+				<attalias Sync="TRUE">EF2MORM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEF2MORW</attrlabl>
+				<attalias Sync="TRUE">XEF2MORW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EF2MORW</attrlabl>
+				<attalias Sync="TRUE">EF2MORW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFUNKNT</attrlabl>
+				<attalias Sync="TRUE">XEFUNKNT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFUNKNT</attrlabl>
+				<attalias Sync="TRUE">EFUNKNT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFUNKNM</attrlabl>
+				<attalias Sync="TRUE">XEFUNKNM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFUNKNM</attrlabl>
+				<attalias Sync="TRUE">EFUNKNM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFUNKNW</attrlabl>
+				<attalias Sync="TRUE">XEFUNKNW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFUNKNW</attrlabl>
+				<attalias Sync="TRUE">EFUNKNW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFNRALT</attrlabl>
+				<attalias Sync="TRUE">XEFNRALT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFNRALT</attrlabl>
+				<attalias Sync="TRUE">EFNRALT</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFNRALM</attrlabl>
+				<attalias Sync="TRUE">XEFNRALM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFNRALM</attrlabl>
+				<attalias Sync="TRUE">EFNRALM</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">XEFNRALW</attrlabl>
+				<attalias Sync="TRUE">XEFNRALW</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">254</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EFNRALW</attrlabl>
+				<attalias Sync="TRUE">EFNRALW</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+		</detailed>
+	</eainfo>
+	<mdDateSt Sync="TRUE">20211008</mdDateSt>
+</metadata>
