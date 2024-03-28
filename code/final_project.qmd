@@ -25,98 +25,85 @@ schools_stops %>%
   theme_classic()
 ```
 
-
 ### function
 
 #### map
 
 ```{r}
 
-#need help:  don't know how to add title with var?
+# need help:  don't know how to add title with var?
 
-
-
-census_var_plot <- function(var){
+census_var_plot <- function(var, title){
   # using chosen variable to make the map with bus stops
   ggplot()+
   geom_sf(data = census2023, aes(fill = {{var}}))+
   geom_sf(data = stops_sf_county, color = "green", size = 0.1)+
   scale_fill_gradient(low = "orange", high = "blue")+
-    labs(fill="")
+    labs(fill="", title = str_to_title(title))
 }
 
-census_var_perc_plot <- function(var){
+census_var_perc_plot <- function(var, title){
   # using the percentage of each race  to make the map with bus stops
   ggplot()+
   geom_sf(data = census2023, aes(fill = {{var}}/population))+
   geom_sf(data = stops_sf_county, color = "green", size = 0.1)+
   scale_fill_gradient(low = "orange", high = "blue")+
-    labs(fill="")
+   labs(fill="", title = str_c("Percentage of ",title))
 }
 
 for(i in 1:2){
-  print(census_var_plot(get(name[i])))
+  print(census_var_plot(get(name[i]), name[i]))
 }
 
 
 for(i in 3:9){
-  print(census_var_perc_plot(get(name[i])))
+  print(census_var_perc_plot(get(name[i]), name[i]))
 }
 
 ```
 
 #### scatter plot
+
 ```{r warning=FALSE}
 
 
 # don't know how to modify label y axis
 
-census_point_plot <- function(var){
+census_point_plot <- function(var, title){
  # Function for plotting the linear relationship between chosen variables and the number of bus stops
   stops_census_join_summ %>% 
   ggplot(aes(x = {{var}}, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
-    labs(y = "Number of Bus Stops in Tract")+
+    labs(y = "Number of Bus Stops in Tract",title = str_to_title(title))+
     theme_classic()
 }
 
-census_point_density_plot <- function(var){
+census_point_density_plot <- function(var, title){
    # Function for plotting the linear relationship between
   # percentage of each ethnicity group and the number of bus stops
   stops_census_join_summ %>% 
   ggplot(aes(x = {{var}}/population, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
-    labs(y = "Number of Bus Stops in Tract")+
+    labs(y = "Number of Bus Stops in Tract", title = str_c("Percentage of ",title))+
     theme_classic()
 }
 
 
 
-for (i in 1:2){
-  print(census_point_plot(get(name[i])))
+for(i in 1:2){
+  print(census_var_plot(get(name[i]), name[i]))
 }
 
 
-for (i in 3:7){
-  print(census_point_density_plot(get(name[i])))
+for(i in 3:9){
+  print(census_var_perc_plot(get(name[i]), name[i]))
 }
 
 ```
 
-
-
-
-
-
-
-
-
-
-
 ### Overview and Covid comparison
-
 
 ```{r demand}
 # total ridership over 5 years
@@ -182,8 +169,6 @@ used_ridership_all %>%
   geom_line()+
   geom_point()
 ```
-
-
 
 ```{r}
 sessionInfo()
