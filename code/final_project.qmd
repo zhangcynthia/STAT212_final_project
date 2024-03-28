@@ -5,152 +5,17 @@ format: html
 editor: visual
 ---
 
-### Cleaning and Setting Up Data
-
-```{r load data}
-library(dplyr)
-library(tidyverse)
-library(tidycensus)
-library(ggplot2)
-library(sf)
-library(Hmisc)
-
-rider_23 <- read.csv("../data/ridership_2023.csv")
-rider_19 <- read.csv("../data/ridership_2019.csv")
-rider_covid <- read.csv("../data/ridership_covid.csv")
-stops <- read.csv("../data/stops.csv")
-first_schools <- st_read("../data/shp_struc_school_program_locs/")
-second_schools <- st_read("../data/shp_society_post_second_enroll/")
-```
-
-```{r data cleaning}
-date <- c("dtBookingStart", "dtWeekStart", "dtDate", "dtMonthYear")
-rider_23 <- rider_23 %>% mutate(across(all_of(date), as.Date))
-rider_19 <- rider_19 %>% mutate(across(all_of(date), as.Date))
-rider_covid <- rider_covid %>% mutate(across(all_of(date), as.Date))
-stops_sf <- st_as_sf(stops, coords = c("lon", "lat"), crs = 4269)
-```
-
-```{r}
-# get population and median Income for Ramsey and Hennepin area
-census2023 <- tidycensus::get_acs(
-    year = 2022,
-    state = "MN",
-    geography = "tract",
-    variables = c("B01003_001", "B19013_001","B02001_002","B02001_003","B02001_004","B02001_005","B02001_006","B02001_007","B02001_008"),
-    output = "wide",
-    geometry = TRUE
-) %>%
-    filter(word(NAME, 4) %in% c("Ramsey", "Hennepin")) %>%
-    mutate(
-        tract = word(NAME, 3),
-        tract = str_remove(tract, ","),
-        county = word(NAME, 4)
-    ) %>%
-    select(-NAME) %>%
-    rename(
-        "population" = "B01003_001E",
-        "medianIncome" = "B19013_001E",
-        "White Alone" = "B02001_002E",
-         "Black or African American Alone" = "B02001_003E",
-         "American Indian and Alaska Native Alone" = "B02001_004E",
-         "Asian Alone" = "B02001_005E",
-         "Native Hawaiian and Other Pacific Islander Alone" = "B02001_006E",
-         "Some Other Race Alone" = "B02001_007E",
-         "Two or More Races" = "B02001_008E"
-        
-    ) %>%
-    select(-contains("_"))
-```
-
-```{r}
-name <- names(census2023)[c(-1)]
-```
-
-```{r}
-stops_sf_county <- stops_sf %>% filter(County %in% c("Ramsey", "Hennepin"))
-
-#joining the bus stop data with the census2023 dataset
-st_crs(stops_sf_county)
-st_crs(census2023)
-
-stops_census_join <- st_join(census2023, stops_sf_county)
-
-#creating the number of bus stops subsetted by the tract, including population, medIncome, Races
-
-stops_census_join_summ <- stops_census_join %>% 
-  group_by(tract, population, medianIncome, `White Alone`, `Black or African American Alone`, `Asian Alone`, `American Indian and Alaska Native Alone`, `Native Hawaiian and Other Pacific Islander Alone`) %>% 
-  summarise(number_of_stops = n_distinct(StopID))
-
-#joining the education data to the main dataset
-first_schools <- first_schools %>% 
-  st_transform(crs = st_crs(stops_census_join_summ))
-second_schools <- second_schools %>% 
-  st_transform(crs = st_crs(stops_census_join_summ))
-
-education_pt1 <- st_join(stops_census_join_summ, first_schools) %>% filter(COUNTYNAME %in% c("Ramsey", "Hennepin"))
-
-education_final <- st_join(education_pt1, second_schools) %>% filter(COUNTYNAME %in% c("Ramsey", "Hennepin"))
-education_final <- education_final %>% select(tract, geometry, GISNAME, GISADDR, LOCDISTNAM, COUNTYNAME, number_of_stops)
-duplicate_rows3 <- duplicated(education_final$GISADDR)
-unique_education <- education_final[!duplicate_rows, ]
-
-
-# Number of schools per tract & then reference to the number of stops
-schools_stops <- unique_education %>% 
-  group_by(tract, number_of_stops) %>% 
-  summarise(number_school = n_distinct(GISNAME))
-
-
-## COUNT BY THE NUMBER OF SCHOOLS IN THE TRACT AND THEN THE NUMBER OF STOPS ##
-```
-
-### Based on Income & Population Size
-
-```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = population))+
-geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")+
-labs(title = "population")
-
-# scatterplot between population variable and number of bus stops
-stops_census_join_summ %>% 
-  ggplot(aes(x = population, y = number_of_stops))+
-    geom_point()+
-    geom_smooth(method = "lm")+
-    labs(x = "Population in Tract", y = "Number of Bus Stops in Tract")+
-    theme_classic()
-
-```
-
-```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = medianIncome))+
-geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")
-
-
-# scatterplot between median income variable and number of bus stops
-stops_census_join_summ %>% 
-  ggplot(aes(x = medianIncome, y = number_of_stops))+
-    geom_point()+
-    geom_smooth(method = "lm")+
-    labs(x = "Median Income of Tract", y = "Number of Bus Stops in Tract")+
-    theme_classic()
-
-```
-
 ### Mapping the Education Sources in Twin Cities
 
 ```{r}
 schools_stops %>% 
   ggplot(aes(x = number_school, y = number_of_stops))+
-  stat_summary_bin(fun = "mean", bins = 10, geom = "point")+ #divides the number of schools by the number of bins, so Bin 1: 0-10 schools, Bin 2: 10:20, etc. 
-  # geom_point(alpha = 0.5)+
+  stat_summary_bin(fun = "mean", bins = 5, geom = "point")+ #divides the number of schools by the number of bins, so Bin 1: 0-10 schools, Bin 2: 10:20, etc. 
   geom_smooth(method = "lm")+
-  labs(x = "Mean Number of Schools (Pre and Post-Secondary) in Tract", y = "Mean Number of Bus Stops in Tract")+ #average number of bus stops in areas with similar numbers of schools
+  labs(x = "Mean Number of Schools (Pre and Post-Secondary) in Tract", 
+       y = "Mean Number of Bus Stops in Tract")+ # avg # of stops in areas with similar # of schools
   theme_classic()
+
 
 schools_stops %>% 
   ggplot(aes(x = number_school, y = number_of_stops))+
@@ -158,104 +23,120 @@ schools_stops %>%
   geom_smooth(method = "lm")+
   labs(x = "Number of Schools (Pre and Post-Secondary) in Tract", y = "Number of Bus Stops in Tract")+ 
   theme_classic()
-
-
 ```
 
-### Based on Ethnicity
+
+### function
+
+#### map
 
 ```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = `White Alone`/population))+
-geom_sf(data = stops_sf_county ,color = "yellow",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")+
-labs(title = "population")
 
-stops_census_join_summ %>% 
-  ggplot(aes(x = `White Alone`/population, y = number_of_stops))+
-    geom_point()+
-    geom_smooth(method = "lm")+
-    labs(x = "Percentage of White Residents in Tract", y = "Number of Bus Stops in Tract")+
-    theme_classic()
+#need help:  don't know how to add title with var?
+
+
+
+census_var_plot <- function(var){
+  # using chosen variable to make the map with bus stops
+  ggplot()+
+  geom_sf(data = census2023, aes(fill = {{var}}))+
+  geom_sf(data = stops_sf_county, color = "green", size = 0.1)+
+  scale_fill_gradient(low = "orange", high = "blue")+
+    labs(fill="")
+}
+
+census_var_perc_plot <- function(var){
+  # using the percentage of each race  to make the map with bus stops
+  ggplot()+
+  geom_sf(data = census2023, aes(fill = {{var}}/population))+
+  geom_sf(data = stops_sf_county, color = "green", size = 0.1)+
+  scale_fill_gradient(low = "orange", high = "blue")+
+    labs(fill="")
+}
+
+for(i in 1:2){
+  print(census_var_plot(get(name[i])))
+}
+
+
+for(i in 3:9){
+  print(census_var_perc_plot(get(name[i])))
+}
+
 ```
 
-```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = `Black or African American Alone`/population))+
-geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")+
-labs(title = "population")
+#### scatter plot
+```{r warning=FALSE}
 
-stops_census_join_summ %>% 
-  ggplot(aes(x = `Black or African American Alone`/population, y = number_of_stops))+
+
+# don't know how to modify label y axis
+
+census_point_plot <- function(var){
+ # Function for plotting the linear relationship between chosen variables and the number of bus stops
+  stops_census_join_summ %>% 
+  ggplot(aes(x = {{var}}, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
-    labs(x = "Percentage of Black/African American Residents in Tract", y = "Number of Bus Stops in Tract")+
+    labs(y = "Number of Bus Stops in Tract")+
     theme_classic()
-```
+}
 
-```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = `American Indian and Alaska Native Alone`/population))+
-geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")
-
-stops_census_join_summ %>% 
-  ggplot(aes(x = `American Indian and Alaska Native Alone`/population, y = number_of_stops))+
+census_point_density_plot <- function(var){
+   # Function for plotting the linear relationship between
+  # percentage of each ethnicity group and the number of bus stops
+  stops_census_join_summ %>% 
+  ggplot(aes(x = {{var}}/population, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
-    labs(x = "Percentage of American Indian/Alaska Native Residents in Tract", y = "Number of Bus Stops in Tract")+
+    labs(y = "Number of Bus Stops in Tract")+
     theme_classic()
+}
+
+
+
+for (i in 1:2){
+  print(census_point_plot(get(name[i])))
+}
+
+
+for (i in 3:7){
+  print(census_point_density_plot(get(name[i])))
+}
+
 ```
 
-```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = `Asian Alone`/population))+
-geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")
 
-stops_census_join_summ %>% 
-  ggplot(aes(x = `Asian Alone`/population, y = number_of_stops))+
-    geom_point()+
-    geom_smooth(method = "lm")+
-    labs(x = "Percentage of Asian Residents in Tract", y = "Number of Bus Stops in Tract")+
-    theme_classic()
-```
 
-```{r}
-ggplot() +
-geom_sf(data = census2023, aes(fill = `Native Hawaiian and Other Pacific Islander Alone`/population))+
-geom_sf(data = stops_sf_county ,color = "green",size = 0.1)+
-scale_fill_gradient(low = "orange", high = "blue")+labs(fill="")
 
-stops_census_join_summ %>% 
-  ggplot(aes(x = `Native Hawaiian and Other Pacific Islander Alone`/population, y = number_of_stops))+
-    geom_point()+
-    geom_smooth(method = "lm")+
-    labs(x = "Percentage of Native Hawaiian and other Pacific Islander Residents in Tract", y = "Number of Bus Stops in Tract")+
-    theme_classic()
-```
+
+
+
+
+
+
 
 ### Overview and Covid comparison
 
-```{r}
-table(is.na(rider_23$Revenue)) # too many NA in Revenue, not use
-used_ridership_all <- rbind(rider_23,rider_19,rider_covid) %>% select(c(3,5,6,8,10,34,35,36,40)) #combine all 
-```
 
 ```{r demand}
-#total ridership
-used_ridership_all %>% ggplot(aes(x=nYear, y=Total_Riders))+geom_col()
+# total ridership over 5 years
+used_ridership_all %>% 
+  group_by(nYear) %>%
+  mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  ggplot(aes(x=nYear, y=Total_Riders))+
+  geom_point()+
+  geom_line()+
+  labs(x = "Year", y = "Total Riders")
 ```
 
 ```{r weekday vs weekend}
-used_ridership_all %>% 
-  filter(!(Schedule %in% c("Holiday","Reduced")))%>% 
-  mutate(Schedule = case_when(Schedule %in% c("Saturday", "Sunday") ~ "Weekend", Schedule == "Weekday"~ "Weekday")) %>% 
-  group_by(nYear, Schedule) %>%
-  mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
-  ggplot(aes(x=Schedule, y = Total_Riders, fill = factor(nYear))) +
-  geom_col(position = "dodge") 
+# 2 comparisons included: weekday vs weekend, and among each year
+weekends_weekdays %>% 
+  ggplot(aes(x= nYear, y = Total_Riders)) +
+  geom_point()+
+  geom_line()+
+  facet_wrap(~Schedule)+
+  labs(x = "Year", y = "Total Riders")
 ```
 
 ```{r RouteType analysis}
@@ -263,25 +144,46 @@ used_ridership_all %>%
 used_ridership_all %>% filter(!(rte_class %in% c("CommRai","SuburbL","Support"))) %>% 
   group_by(nYear, rte_class) %>%
   mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
-  ggplot(aes(x=factor(nYear), y = Total_Riders, fill = factor(nYear))) +
-  geom_col(position = "dodge")+
-  facet_wrap(~rte_class)
+  ggplot(aes(x=nYear, y = Total_Riders)) +
+  geom_point()+
+  geom_line()+
+  facet_wrap(~rte_class)+
+  labs(x = "Year", y = "Total Riders")
 
 
-# BRT increase because increasing line
-used_ridership_all%>% filter(rte_class == "BRT") %>% distinct(nYear,Route) %>% group_by(nYear) %>% summarise(num_BRT = n()) %>% ggplot(aes(x =nYear, y = num_BRT))+geom_line() # the increase of BRT can replace one of the orginal line
+# total ridership for BRT increase because increasing lines
+used_ridership_all%>% 
+  filter(rte_class == "BRT") %>% 
+  distinct(nYear,Route) %>% 
+  group_by(nYear) %>% 
+  summarise(num_BRT = n()) %>% 
+  ggplot(aes(x =nYear, y = num_BRT))+
+  geom_point()+
+  geom_line() # the increase of BRT can replace one of the orginal line
 
 
 ```
 
 ```{r route accessbility supply}
+# daily load drops
 used_ridership_all %>% 
   group_by(nYear) %>%
-  mutate(Daily_load = n()) %>% ggplot(aes(x=nYear, y= Daily_load))+geom_line()+geom_point()
+  mutate(Daily_load = n()) %>% 
+  ggplot(aes(x=nYear, y= Daily_load))+
+  geom_line()+
+  geom_point()
 
-used_ridership_all %>% distinct(nYear,Route) %>% group_by(nYear) %>% 
-  mutate(nRoute = n()) %>% ggplot(aes(x=nYear, y= nRoute))+geom_line()+geom_point()
+# supply # of roads drops
+used_ridership_all %>% 
+  distinct(nYear,Route) %>% 
+  group_by(nYear) %>% 
+  mutate(nRoute = n()) %>% 
+  ggplot(aes(x=nYear, y= nRoute))+
+  geom_line()+
+  geom_point()
 ```
+
+
 
 ```{r}
 sessionInfo()
