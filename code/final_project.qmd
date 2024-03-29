@@ -1,11 +1,15 @@
 ---
 title: "Public Transportation Accessibility in Twin Cities"
 author: "Tina Chen, Shirley Jiang, Cynthia Zhang"
-format: html
+date: "`r format(Sys.Date(),'%e de %B, %Y')`"
+format: 
+  html:
+    self-contained: true
 editor: visual
 ---
 
-### Mapping the Education Sources in Twin Cities
+
+### Mapping sthe Education Sources in Twin Cities
 
 ```{r}
 schools_stops %>% 
@@ -66,7 +70,6 @@ for(i in 3:9){
 
 ```{r warning=FALSE}
 
-
 # don't know how to modify label y axis
 
 census_point_plot <- function(var, title){
@@ -93,12 +96,12 @@ census_point_density_plot <- function(var, title){
 
 
 for(i in 1:2){
-  print(census_var_plot(get(name[i]), name[i]))
+  print(census_point_plot(get(name[i]), name[i]))
 }
 
 
-for(i in 3:9){
-  print(census_var_perc_plot(get(name[i]), name[i]))
+for(i in 3:7){
+  print(census_point_density_plot(get(name[i]), name[i]))
 }
 
 ```

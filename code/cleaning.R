@@ -3,7 +3,9 @@ library(tidyverse)
 library(tidycensus)
 library(ggplot2)
 library(sf)
+library(readr)
 library(Hmisc)
+
 
 # import data
 rider_23 <- read.csv("../data/ridership_2023.csv")
