@@ -8,7 +8,6 @@ format:
 editor: visual
 ---
 
-
 ### Mapping sthe Education Sources in Twin Cities
 
 ```{r}
