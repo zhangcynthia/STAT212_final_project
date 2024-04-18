@@ -1,12 +1,16 @@
 ---
 title: "Public Transportation Accessibility in Twin Cities"
 author: "Tina Chen, Shirley Jiang, Cynthia Zhang"
-date: "`r format(Sys.Date(),'%e de %B, %Y')`"
+date: "`r format(Sys.Date(),'%e %B, %Y')`"
 format: 
   html:
     self-contained: true
 editor: visual
 ---
+
+```{r}
+source('cleaning.R')
+```
 
 ### Mapping sthe Education Sources in Twin Cities
 
@@ -68,9 +72,6 @@ for(i in 3:9){
 #### scatter plot
 
 ```{r warning=FALSE}
-
-# don't know how to modify label y axis
-
 census_point_plot <- function(var, title){
  # Function for plotting the linear relationship between chosen variables and the number of bus stops
   stops_census_join_summ %>% 
@@ -102,6 +103,10 @@ for(i in 1:2){
 for(i in 3:7){
   print(census_point_density_plot(get(name[i]), name[i]))
 }
+
+
+
+
 
 ```
 
@@ -171,6 +176,143 @@ used_ridership_all %>%
   geom_line()+
   geom_point()
 ```
+
+
+
+# Correlation Graph of All Variables:
+
+```{r}
+# correlation <- function(df, var) {
+#   cor_value <- cor(df[[var]], df$number_of_stops, use = "complete.obs")
+#   return(cor_value)
+# }
+
+correlation_values <- vector("list", length = 7)
+columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone")
+
+
+
+for (col_name in columns_to_iterate) {
+# calculate correlation values
+  cor_value <- cor(cleaned_stops_census[[col_name]], cleaned_stops_census$number_of_stops, use = "complete.obs")
+# confidence intervals
+  mod_formula_str <- str_c("number_of_stops", "~", col_name)
+  mod_form <- as.formula(mod_formula_str)
+  mod <- lm(mod_form, data = cleaned_stops_census)
+  ci <- confint(mod, level = 0.95)
+# table of data
+  correlation_values[[col_name]] <- tibble(
+    variable = col_name,
+    correlation = cor_value,
+    ci_lower = ci[variable, "2.5 %"],
+    ci_upper = ci[variable, "97.5 %"],
+    slope = mod$coefficients[variable]
+  )
+}
+
+correlation_dataframe <- bind_rows(correlation_values)
+head(correlation_dataframe)
+
+correlation_dataframe %>% 
+  ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
+    geom_point(size = 2)+
+  labs(x = "Strength of Different Variables in Relation to Number of Stops")+
+  theme_minimal()+
+  geom_hline( yintercept = 0, color = "red")+
+  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native hawaiian \n other pacific islander "))
+
+
+# zoom in 
+correlation_dataframe[c(-6,-7),] %>% 
+  ggplot(aes(x = variable, y = slope))+
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
+    geom_point(size = 2)+
+  labs(x = "Strength of Different Variables in Relation to Number of Stops")+
+  theme_minimal()+
+  geom_hline( yintercept = 0, color = "red")+
+   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian "))
+
+correlation_dataframe$variable
+
+```
+
+
+
+# Identifying the Outliers:
+```{r}
+## Tina
+cleaned_stops_census %>%
+ select(population,black_or_african_american_alone,number_of_stops) %>% 
+  ggplot(aes(x = black_or_african_american_alone, y= number_of_stops))+
+  geom_point()
+
+model <- lm(number_of_stops ~ population+median_income + white_alone + black_or_african_american_alone+asian_alone + american_indian_and_alaska_native_alone + native_hawaiian_and_other_pacific_islander_alone, cleaned_stops_census)
+
+par(mfrow = c(2, 2))
+plot(model)
+
+cooksD <- cooks.distance(model)
+influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
+as.numeric(names(influential)) 
+outlier <- rep(0, cleaned_stops_census%>% nrow() )
+outlier[as.numeric(names(influential)) ] <- 1
+outlier_info <- cleaned_stops_census %>% cbind(outlier = outlier) %>% filter(outlier == 1)
+
+outlier_info_sf <- st_as_sf(outlier_info)
+
+
+# We see that 22 tract have a Cook’s Distance greater than 3x the mean.
+
+# how many sd from the linear regression because of unit difference
+ ggplot()+
+  geom_sf(data = census2023)+
+   geom_sf(data = outlier_info_sf, fill = "red")+
+  geom_sf(data = stops_sf_county, color = "green", size = 0.1, alpha = 0.3)
+   # geom_text(data = outlier_info_sf, aes(label = tract, x = outlier_info_sf[["geometry"]][["X"]], y = outlier_info_sf[["geometry"]][["Y"]]), color = "black", size = 3)
+
+```
+
+
+```{r}
+# demographics as per capita
+
+outliers_demographic_pc <- cleaned_stops_census %>% 
+ mutate(white_pc = white_alone/population, 
+        black_pc = black_or_african_american_alone/population,
+        asian_pc = asian_alone/population,
+        american_indian_and_alaska_native_pc = american_indian_and_alaska_native_alone/population,
+        native_hawaiian_other_pi_pc = native_hawaiian_and_other_pacific_islander_alone/population)
+
+# The stop outliers that have more than 100 total number of bus stops are:
+
+outliers_demographic_pc %>% 
+  filter(number_of_stops > 100) %>% 
+  arrange(desc(number_of_stops))
+
+```
+
+> Tract 1261.02 is located near the U of M campus in Minneapolis which supports the hypothesis that there would be more stops (greater access to public transportation) for individuals who likely use it more - students. It also has the largest population size out of our narrowed-down list. This would also likely be a viable area for professionals to reside away from downtown Minneapolis but still in commuting distance to their jobs.
+
+![Tract 1261.02](../image/tract%201261.02.png)
+
+> Tract 265.14 is located in Plymouth, MN a large suburb near the Twin Cities. That explains their relatively high median income levels. This tract is also mainly where the bus stops are located to get around the suburb, explaining the high level of stops.
+
+![Tract 265.14](../image/tract%20265.14.png)
+
+> Tract 1044 is located in central Minneapolis which also makes intuitive sense why it is in the top three for number of stops. There is often more accessibility located in the downtown areas of a city to provide ongoers an easy way to move around. There is likely less population because downtowns tend to be where businesses are located, so many workers probably commute to work from other locations.
+
+![Tract 1044](../image/tract%201044.png)
+
+> Tract 251 is one the largest tract sizes which might explain partly why it has so many bus stops. However, another reason might be because Mall of America is located within this tract which prompts there to be more public transportation around this area to get to the Mall as it is a major destination within the Twin Cities.
+
+![Tract 251](../image/tract%20251.png) \> Tract 342.01 is downtown St. Paul. Similar to the city cases located above, downtown St. Paul would have a characteristically higher number of bus stops to allow citygoers a more convenient way to get downtown or move around downtown. Once again, less people tend to live downtown but rather in the areas around.
+
+![Tract 342.01](../image/tract%20342.01.png)
+
+> Tract 216.02 is in Golden Valley, MN. Golden Valley is a first-ring suburb of Minneapolis meaning that there is still public transportation access to provide the residents to commute into the city as they so please. They would need more stops in order to fully supply the residents their trips into the city.
+
+![Tract 216.02](../image/tract%20216.02.png)
 
 ```{r}
 sessionInfo()

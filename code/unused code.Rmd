@@ -1,0 +1,40 @@
+---
+title: "unused code"
+author: "Tina Chen"
+date: "2024-04-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+## correct but repetitive code, it has the coefficient for the percentage change rather than the population for the whole group. 
+
+# cleaned_stops_census <- janitor::clean_names(stops_census_join_summ)
+# all_col_name <- names(cleaned_stops_census)[2:9]
+# 
+# 
+# coeff_function_perc <- function(var) {
+#   if(var %in% c("population", "median_income")){
+#     formula <- str_c("number_of_stops ~ ", var)
+#   }else{
+#     formula <- str_c("number_of_stops ~ (", var, "/population)")
+#   }
+#   result <- generics::tidy(lm(formula, cleaned_stops_census), conf.int = TRUE)[2, c(1, 2, 6, 7)]
+#   return(result)
+# }
+# 
+# coeff_function_perc("population")
+# coeff_function_perc("native_hawaiian_and_other_pacific_islander_alone")
+# 
+# result<- purrr::map(all_col_name[1:7],coeff_function_perc) %>% 
+#   bind_rows()
+# 
+# ggplot(result[1:5,])+geom_point(aes(x = term, y = estimate), size = 2)+geom_errorbar(aes( x= term, ymin = conf.low, ymax = conf.high))
+# 
+# ggplot(result)+geom_point(aes(x = term, y = estimate))+
+#   geom_errorbar(aes( x= term, ymin = conf.low, ymax = conf.high))
+```
+

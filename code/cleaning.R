@@ -5,6 +5,9 @@ library(ggplot2)
 library(sf)
 library(readr)
 library(Hmisc)
+library(tibble)
+library(stats)
+library(janitor)
 
 
 # import data
@@ -24,6 +27,7 @@ stops_sf_county <- st_as_sf(stops, coords = c("lon", "lat"), crs = 4269) %>%
   filter(County %in% c("Ramsey", "Hennepin"))
 
 # census data:  get variables for Ramsey and Hennepin area
+# There is something wrong with the website, will figure that out later, using year= 2021 for the testing
 census2023 <- tidycensus::get_acs(
   year = 2022,
   state = "MN",
@@ -32,9 +36,9 @@ census2023 <- tidycensus::get_acs(
   output = "wide",
   geometry = TRUE
 ) %>%
-  filter(word(NAME, 4) %in% c("Ramsey", "Hennepin")) %>%
+  filter(word(NAME, 4) %in% c("Ramsey", "Hennepin")) %>% # only filter by the 4th words which represents counties
   mutate(
-    tract = word(NAME, 3),
+    tract = word(NAME, 3), # ie.  Census Tract 508.24, Anoka County, Minnesota, only need "508.24"
     tract = str_remove(tract, ","),
     county = word(NAME, 4)
   ) %>%
