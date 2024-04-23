@@ -23,19 +23,9 @@ source('cleaning.R')
 
 ## Demographic and Stops Distribution
 
-### Population
+### Overview
 
 
-### Income
-
-
-### Race
-
-
-### Job
-
-
-### Education
 
 
 
