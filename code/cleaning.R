@@ -15,6 +15,7 @@ rider_23 <- read.csv("../data/ridership_2023.csv")
 rider_19 <- read.csv("../data/ridership_2019.csv")
 rider_covid <- read.csv("../data/ridership_covid.csv")
 stops <- read.csv("../data/stops.csv")
+WAC <- read.csv("../data/mn_wac_S000_JT00_2021.csv")
 first_schools <- st_read("../data/shp_struc_school_program_locs/")
 second_schools <- st_read("../data/shp_society_post_second_enroll/")
 
@@ -66,9 +67,9 @@ name <- names(census2023)[c(-1)]
 #joining the bus stop data with the census2023 dataset
 stops_census_join <- st_join(census2023, stops_sf_county)
 
-#creating the number of bus stops subsetted by the tract, including population, medIncome, Races
-stops_census_join_summ <- stops_census_join %>% 
-  group_by(tract, population, medianIncome, `White Alone`, `Black or African American Alone`, `Asian Alone`, `American Indian and Alaska Native Alone`, `Native Hawaiian and Other Pacific Islander Alone`) %>% 
+#creating the number of bus stops subsetted by the GEOID, including population, medIncome, Races
+stops_census_join_sum <- stops_census_join %>% 
+  group_by(GEOID, population, medianIncome, `White Alone`, `Black or African American Alone`, `Asian Alone`, `American Indian and Alaska Native Alone`, `Native Hawaiian and Other Pacific Islander Alone`) %>% 
   summarise(number_of_stops = n_distinct(StopID))
 
 #joining the education data to the main dataset
@@ -103,3 +104,24 @@ weekends_weekdays <- used_ridership_all %>%
   mutate(Schedule = case_when(Schedule %in% c("Saturday", "Sunday") ~ "Weekend", Schedule == "Weekday"~ "Weekday")) %>% 
   group_by(nYear, Schedule) %>%
   summarise(Total_Riders = sum(Total_Riders,na.rm = TRUE))
+
+
+##################### Workplace Area Characteristics #####################
+WAC_clean <- WAC %>%
+  mutate(w_geocode = as.character(w_geocode),
+         tract_id = substr(w_geocode, 1, 11)) %>%
+  select(-c(createdate, w_geocode)) %>%
+  group_by(tract_id) %>%
+  summarise(across(1:50, ~sum(.x, na.rm = TRUE))) %>% 
+  rename(GEOID = tract_id)
+
+census_work <- left_join(census2023, WAC_clean, by = "GEOID") 
+census_work <- census_work %>% 
+  rename("total_jobs" = "C000") %>% 
+  select(GEOID, total_jobs, geometry)
+
+job_stops <- census_work %>% 
+  left_join(as.data.frame(stops_census_join_sum), by = "GEOID") %>% 
+  select(GEOID, total_jobs, number_of_stops, geometry.x) %>% 
+  rename("geometry" = "geometry.x")
+
