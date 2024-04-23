@@ -8,7 +8,7 @@ format:
 editor: visual
 ---
 
-```{r}
+```{r, echo = FALSE, results = FALSE, message = FALSE, warning=FALSE}
 source('cleaning.R')
 ```
 
@@ -74,7 +74,7 @@ for(i in 3:9){
 ```{r warning=FALSE}
 census_point_plot <- function(var, title){
  # Function for plotting the linear relationship between chosen variables and the number of bus stops
-  stops_census_join_summ %>% 
+  stops_census_join_sum %>% 
   ggplot(aes(x = {{var}}, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
@@ -85,14 +85,13 @@ census_point_plot <- function(var, title){
 census_point_density_plot <- function(var, title){
    # Function for plotting the linear relationship between
   # percentage of each ethnicity group and the number of bus stops
-  stops_census_join_summ %>% 
+  stops_census_join_sum %>% 
   ggplot(aes(x = {{var}}/population, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
     labs(y = "Number of Bus Stops in Tract", title = str_c("Percentage of ",title))+
     theme_classic()
 }
-
 
 
 for(i in 1:2){
@@ -105,10 +104,25 @@ for(i in 3:7){
 }
 
 
-
-
-
 ```
+
+
+```{r number of job, message=FALSE}
+job_stops %>% 
+  ggplot() +
+  geom_sf(aes(fill = total_jobs)) +
+  scale_fill_gradient(low = "white", high = "purple") +
+  #geom_sf(data = stops_sf_county, color = "yellow", size = 0.1) +
+  theme_classic() +
+  labs(fill = "num of jobs")
+
+job_stops %>% 
+  ggplot(aes(x = total_jobs, y = number_of_stops)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_classic()
+```
+
 
 ### Overview and Covid comparison
 
@@ -123,6 +137,7 @@ used_ridership_all %>%
   labs(x = "Year", y = "Total Riders")
 ```
 
+
 ```{r weekday vs weekend}
 # 2 comparisons included: weekday vs weekend, and among each year
 weekends_weekdays %>% 
@@ -132,6 +147,7 @@ weekends_weekdays %>%
   facet_wrap(~Schedule)+
   labs(x = "Year", y = "Total Riders")
 ```
+
 
 ```{r RouteType analysis}
 
