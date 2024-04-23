@@ -74,28 +74,32 @@ stops_census_join_sum <- stops_census_join %>%
 
 #joining the education data to the main dataset
 first_schools <- first_schools %>% 
-  st_transform(crs = st_crs(stops_census_join_summ))
+  st_transform(crs = st_crs(stops_census_join_sum))
 second_schools <- second_schools %>% 
-  st_transform(crs = st_crs(stops_census_join_summ))
+  st_transform(crs = st_crs(stops_census_join_sum))
 
-education_pt1 <- st_join(stops_census_join_summ, first_schools) %>% 
+education_pt1 <- st_join(stops_census_join_sum, first_schools) %>% 
   filter(COUNTYNAME %in% c("Ramsey", "Hennepin"))
 
 education_final <- st_join(education_pt1, second_schools) %>% 
   filter(COUNTYNAME %in% c("Ramsey", "Hennepin"))
 education_final <- education_final %>% 
-  select(tract, geometry, GISNAME, GISADDR, LOCDISTNAM, COUNTYNAME, number_of_stops)
+  select(GEOID, geometry, GISNAME, GISADDR, LOCDISTNAM, COUNTYNAME, number_of_stops)
 duplicate_rows3 <- duplicated(education_final$GISADDR)
 unique_education <- education_final[!duplicate_rows3, ]
 
 
 # Number of schools per tract & then reference to the number of stops
 schools_stops <- unique_education %>% 
-  group_by(tract, number_of_stops) %>% 
+  group_by(GEOID, number_of_stops) %>% 
   summarise(number_school = n_distinct(GISNAME))
 
 ## COUNT BY THE NUMBER OF SCHOOLS IN THE TRACT AND THEN THE NUMBER OF STOPS ##
-
+stops_census_join_sum <- stops_census_join_sum %>% 
+  st_drop_geometry() %>% 
+  left_join(schools_stops, by = "GEOID") %>% 
+  select(-number_of_stops.x) %>% 
+  rename("number_of_stops" = "number_of_stops.y")
 
 ##################### used_ridership #####################
 used_ridership_all <- rbind(rider_23,rider_19,rider_covid) %>% select(c(3,5,6,8,10,34,35,36,40)) 
@@ -115,7 +119,8 @@ WAC_clean <- WAC %>%
   summarise(across(1:50, ~sum(.x, na.rm = TRUE))) %>% 
   rename(GEOID = tract_id)
 
-census_work <- left_join(as.data.frame(stops_census_join_sum), WAC_clean, by = "GEOID") 
+census_work <- left_join(stops_census_join_sum, WAC_clean, by = "GEOID") 
 stops_census_join_sum <- census_work %>% 
-  rename("total_jobs" = "C000")
+  rename("total_jobs" = "C000") %>% 
+  na.omit()
 

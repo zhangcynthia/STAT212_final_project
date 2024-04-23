@@ -204,8 +204,8 @@ used_ridership_all %>%
 # }
 cleaned_stops_census <- clean_names(stops_census_join_sum)
 
-correlation_values <- vector("list", length = 8)
-columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone", "total_jobs")
+correlation_values <- vector("list", length = 9)
+columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone", "number_school", "total_jobs")
 
 
 for (col_name in columns_to_iterate) {
@@ -227,7 +227,7 @@ for (col_name in columns_to_iterate) {
 }
 
 correlation_dataframe <- bind_rows(correlation_values)
-head(correlation_dataframe)
+head(correlation_dataframe, 9)
 
 correlation_dataframe %>% 
   ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
@@ -236,7 +236,7 @@ correlation_dataframe %>%
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
   theme_minimal()+
   geom_hline( yintercept = 0, color = "red")+
-  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native hawaiian \n other pacific islander "))
+  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native hawaiian \n other pacific islander ", "school", "job"))
 
 
 # zoom in 
@@ -247,7 +247,7 @@ correlation_dataframe[c(-6,-7),] %>%
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
   theme_minimal()+
   geom_hline( yintercept = 0, color = "red")+
-   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian", "job"))
+   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian", "school", "job"))
 
 correlation_dataframe$variable
 
