@@ -115,13 +115,7 @@ WAC_clean <- WAC %>%
   summarise(across(1:50, ~sum(.x, na.rm = TRUE))) %>% 
   rename(GEOID = tract_id)
 
-census_work <- left_join(census2023, WAC_clean, by = "GEOID") 
-census_work <- census_work %>% 
-  rename("total_jobs" = "C000") %>% 
-  select(GEOID, total_jobs, geometry)
-
-job_stops <- census_work %>% 
-  left_join(as.data.frame(stops_census_join_sum), by = "GEOID") %>% 
-  select(GEOID, total_jobs, number_of_stops, geometry.x) %>% 
-  rename("geometry" = "geometry.x")
+census_work <- left_join(as.data.frame(stops_census_join_sum), WAC_clean, by = "GEOID") 
+stops_census_join_sum <- census_work %>% 
+  rename("total_jobs" = "C000")
 

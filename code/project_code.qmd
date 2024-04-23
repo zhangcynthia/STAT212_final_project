@@ -202,10 +202,10 @@ used_ridership_all %>%
 #   cor_value <- cor(df[[var]], df$number_of_stops, use = "complete.obs")
 #   return(cor_value)
 # }
+cleaned_stops_census <- clean_names(stops_census_join_sum)
 
-correlation_values <- vector("list", length = 7)
-columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone")
-
+correlation_values <- vector("list", length = 8)
+columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone", "total_jobs")
 
 
 for (col_name in columns_to_iterate) {
@@ -247,7 +247,7 @@ correlation_dataframe[c(-6,-7),] %>%
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
   theme_minimal()+
   geom_hline( yintercept = 0, color = "red")+
-   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian "))
+   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian", "job"))
 
 correlation_dataframe$variable
 
@@ -263,13 +263,13 @@ cleaned_stops_census %>%
   ggplot(aes(x = black_or_african_american_alone, y= number_of_stops))+
   geom_point()
 
-model <- lm(number_of_stops ~ population+median_income + white_alone + black_or_african_american_alone+asian_alone + american_indian_and_alaska_native_alone + native_hawaiian_and_other_pacific_islander_alone, cleaned_stops_census)
+model <- lm(number_of_stops ~ population+median_income + white_alone + black_or_african_american_alone+asian_alone + american_indian_and_alaska_native_alone + native_hawaiian_and_other_pacific_islander_alone + total_jobs, cleaned_stops_census)
 
 par(mfrow = c(2, 2))
 plot(model)
 
 cooksD <- cooks.distance(model)
-influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
+influential <- cooksD[(cooksD > (10 * mean(cooksD, na.rm = TRUE)))]
 as.numeric(names(influential)) 
 outlier <- rep(0, cleaned_stops_census%>% nrow() )
 outlier[as.numeric(names(influential)) ] <- 1
