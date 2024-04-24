@@ -8,7 +8,8 @@ library(Hmisc)
 library(tibble)
 library(stats)
 library(janitor)
-
+library(animation)
+library(magick)
 
 # import data
 rider_23 <- read.csv("../data/ridership_2023.csv")

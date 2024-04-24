@@ -38,6 +38,9 @@ schools_stops %>%
 
 ```{r}
 
+name
+
+
 # need help:  don't know how to add title with var?
 
 census_var_plot <- function(var, title){
@@ -58,16 +61,35 @@ census_var_perc_plot <- function(var, title){
    labs(fill="", title = str_c("Percentage of ",title))
 }
 
+plot_map <- list(0,9)
+
 for(i in 1:2){
+  plot_map[[i]] <- census_var_plot(get(name[i]), name[i])
   print(census_var_plot(get(name[i]), name[i]))
 }
 
 
 for(i in 3:9){
-  print(census_var_perc_plot(get(name[i]), name[i]))
+  plot_map[[i]] <- census_var_plot(get(name[i]), name[i])
 }
 
+
+
+library(mapview)
+
+m <- list()
+for (I in 1:9) {
+  m[[I]] <- mapview(census2023, zcol = name[I],legend = TRUE,layer.name = name[I])
+}
+
+do.call(leafsync::sync, c(m[1:9], list(ncol = 3)))
+
 ```
+
+
+
+
+
 
 #### scatter plot
 
@@ -78,7 +100,8 @@ census_point_plot <- function(var, title){
   ggplot(aes(x = {{var}}, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
-    labs(y = "Number of Bus Stops in Tract",title = str_to_title(title))+
+    labs(y = "Number of Bus Stops in Tract",title = str_to_title(title),
+         x = str_to_title(title))+
     theme_classic()
 }
 
@@ -89,19 +112,25 @@ census_point_density_plot <- function(var, title){
   ggplot(aes(x = {{var}}/population, y = number_of_stops))+
     geom_point()+
     geom_smooth(method = "lm")+
-    labs(y = "Number of Bus Stops in Tract", title = str_c("Percentage of ",title))+
+    labs(y = "Number of Bus Stops in Tract", title = str_c("Percentage of ",title),
+         x = str_c("Percentage of ",title) )+
     theme_classic()
 }
+
+ # scatter_polts[[i]] <- census_point_plot(get(name[i]), name[i])
+
+
+scatter_polts <- list()
 
 
 for(i in 1:2){
   print(census_point_plot(get(name[i]), name[i]))
 }
 
-
 for(i in 3:7){
   print(census_point_density_plot(get(name[i]), name[i]))
 }
+
 
 
 ```
@@ -193,11 +222,10 @@ used_ridership_all %>%
   geom_point()
 ```
 
-
-
 # Correlation Graph of All Variables:
 
 ```{r}
+cleaned_stops_census <- clean_names(stops_census_join_summ)
 # correlation <- function(df, var) {
 #   cor_value <- cor(df[[var]], df$number_of_stops, use = "complete.obs")
 #   return(cor_value)
@@ -241,7 +269,7 @@ correlation_dataframe %>%
 
 # zoom in 
 correlation_dataframe[c(-6,-7),] %>% 
-  ggplot(aes(x = variable, y = slope))+
+  ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
     geom_point(size = 2)+
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
@@ -249,15 +277,22 @@ correlation_dataframe[c(-6,-7),] %>%
   geom_hline( yintercept = 0, color = "red")+
    scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian", "school", "job"))
 
-correlation_dataframe$variable
+
 
 ```
 
 
 
+
+```{r}
+cleaned_stops_census <- clean_names(stops_census_join_summ)
+```
+
 # Identifying the Outliers:
+
 ```{r}
 ## Tina
+
 cleaned_stops_census %>%
  select(population,black_or_african_american_alone,number_of_stops) %>% 
   ggplot(aes(x = black_or_african_american_alone, y= number_of_stops))+
@@ -288,7 +323,6 @@ outlier_info_sf <- st_as_sf(outlier_info)
    # geom_text(data = outlier_info_sf, aes(label = tract, x = outlier_info_sf[["geometry"]][["X"]], y = outlier_info_sf[["geometry"]][["Y"]]), color = "black", size = 3)
 
 ```
-
 
 ```{r}
 # demographics as per capita
