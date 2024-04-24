@@ -14,33 +14,54 @@ source('cleaning.R')
 
 ## Introduction
 
-
 ## Motivation
 
 ## Data Resource
 
 ## Demographic and Stops Distribution
 
+### Overview
+
 ```{r}
+ggplot() +
+  geom_sf(data = census2023, fill = "white") +
+  geom_sf(data = stops_sf_county, size = 0.1, color = "yellow") +
+  theme_classic()
+```
+
+
+```{r, echo=FALSE}
 m <- list()
 for (I in 1:9) {
   m[[I]] <- mapview(census2023, zcol = name[I],legend = TRUE,layer.name = name[I])
 }
 
-do.call(leafsync::sync, c(m[1:9], list(ncol = 3)))
+do.call(leafsync::sync, c(m[c(1:4, 6)], list(ncol = 3)))
 ```
 
 
-```{r echo=FALSE}
-stops_census_join_sum
-cleaned_stops_census
+```{r echo=FALSE, warning=FALSE}
+cleaned_stops_census <- clean_names(stops_census_join_sum)
 
+model <- lm(number_of_stops ~ population+median_income + white_alone + black_or_african_american_alone+asian_alone + american_indian_and_alaska_native_alone + native_hawaiian_and_other_pacific_islander_alone + total_jobs, cleaned_stops_census)
+
+par(mfrow = c(2, 2))
+#plot(model)
+
+cooksD <- cooks.distance(model)
+influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
+outlier <- rep(0, cleaned_stops_census%>% nrow() )
+outlier[as.numeric(names(influential)) ] <- 1
+outlier_info <- cleaned_stops_census %>% cbind(outlier = outlier) %>% filter(outlier == 1)
+
+cleaned_stops_census <- cleaned_stops_census %>% filter(!geoid %in% outlier_info$geoid)
+```
+
+
+```{r echo=FALSE, warning=FALSE}
 columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone", "number_school", "total_jobs")
 
-
-
 correlation_values <- vector("list", length = 9)
-
 
 for (col_name in columns_to_iterate) {
 # calculate correlation values
@@ -56,35 +77,44 @@ for (col_name in columns_to_iterate) {
     slope = mod$coefficients[variable],
     ci_lower = ci[variable, "2.5 %"],
     ci_upper = ci[variable, "97.5 %"]
-
   )
 }
 
-correlation_dataframe <- bind_rows(correlation_values)
-
-correlation_dataframe
+correlation_df <- bind_rows(correlation_values)
+#print(correlation_df)
+knitr::kable(correlation_df, format = "html")
 
 #number_school is good, native_hawaiian_and_other_pacific_islander_alone and american_indian_and_alaska_native_alone is uncertain
-correlation_dataframe %>% 
-  ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
+
+# correlation_dataframe %>% 
+#   ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
+#   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
+#     geom_point(size = 2)+
+#   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
+#   theme_minimal()+
+#   geom_hline( yintercept = 0, color = "red")+
+#   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native \n hawaiian \n other pacific islander ", "school", "job"))
+
+
+## zoom in 
+correlation_df[-c(6,7,8),] %>% 
+  ggplot(aes(x = factor(variable, level = correlation_df$variable), y = slope))+
   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
     geom_point(size = 2)+
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
   theme_minimal()+
   geom_hline( yintercept = 0, color = "red")+
-  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native \n hawaiian \n other pacific islander ", "school", "job"))
+  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "total job"))
 
-
-## zoom in 
-correlation_dataframe[-c(6,7,8),] %>% 
-  ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
+# education
+correlation_df[8,] %>% 
+  ggplot(aes(x = factor(variable, level = correlation_df$variable), y = slope))+
   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
     geom_point(size = 2)+
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
   theme_minimal()+
   geom_hline( yintercept = 0, color = "red")+
   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", " total job"))
-
 ```
 
 There isn't enough information we can extract from the map plot, although they are quite visually appealing. To gain a deeper understanding of how each factor influences the total number of stops per tract, we build 9 linear regression models. From these models, we obtained coefficients for each factor along with their 95% confidence intervals. We then created visualizations to better illustrate these results.
@@ -94,12 +124,54 @@ Based on the plot, we observe a positive correlation between the number of schoo
 Zooming in further, we find that population, White alone, Black or African American, and total jobs all have a positive correlation, while median income has a negative correlation. Regarding Asian, once again, since its confidence interval crosses 0, we are uncertain about its correlation.
 
 
-### Overview
-
 ## Pre-Covid and Post-Covid Comparison
 
-### Ridership
+### Ridership (Demand)
 
-### Route
+```{r echo=FALSE}
+used_ridership_all %>% 
+  group_by(nYear) %>%
+  mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
+  ggplot(aes(x=nYear, y=Total_Riders))+
+  geom_point() +
+  geom_line()+
+  labs(x = "Year", y = "Total Riders", title = "Ridership Trend Before and After Covid") +
+  theme_classic()
+
+weekends_weekdays %>% 
+  ggplot(aes(x= nYear, y = Total_Riders)) +
+  geom_point()+
+  geom_line()+
+  facet_wrap(~Schedule) +
+  labs(x = "Year", y = "Total Riders", title = "Weekday and Weekend Ridership Comparison") +
+  theme_classic()
+```
+
+### Route (Supply)
+
+```{r echo=FALSE}
+used_ridership_all %>% 
+  group_by(nYear) %>%
+  mutate(Daily_load = n()) %>% 
+  ggplot(aes(x=nYear, y= Daily_load)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "Year", y = "Daily load") +
+  theme_classic()
+
+used_ridership_all %>% 
+  distinct(nYear,Route) %>% 
+  group_by(nYear) %>% 
+  mutate(nRoute = n()) %>% 
+  ggplot(aes(x=nYear, y= nRoute)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "Year", y = "Number of routes", title = "Change in Number of Routes Provided") +
+  theme_classic()
+```
+
+## Limitations
+
 
 ## Conclusion
+
