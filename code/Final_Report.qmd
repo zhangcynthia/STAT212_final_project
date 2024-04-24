@@ -17,6 +17,7 @@ source('cleaning.R')
 ## Motivation
 
 ## Data Resource
+In this project, we are using multiple data sources. We extract the data of daily 
 
 ## Demographic and Stops Distribution
 
@@ -25,8 +26,9 @@ source('cleaning.R')
 ```{r}
 ggplot() +
   geom_sf(data = census2023, fill = "white") +
-  geom_sf(data = stops_sf_county, size = 0.1, color = "yellow") +
-  theme_classic()
+  geom_sf(data = stops_sf_county, size = 0.1, color = "blue") +
+  theme_void() +
+  labs(title = "Bus Stops Distribution")
 ```
 
 
@@ -46,13 +48,21 @@ cleaned_stops_census <- clean_names(stops_census_join_sum)
 model <- lm(number_of_stops ~ population+median_income + white_alone + black_or_african_american_alone+asian_alone + american_indian_and_alaska_native_alone + native_hawaiian_and_other_pacific_islander_alone + total_jobs, cleaned_stops_census)
 
 par(mfrow = c(2, 2))
-#plot(model)
 
 cooksD <- cooks.distance(model)
 influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
 outlier <- rep(0, cleaned_stops_census%>% nrow() )
 outlier[as.numeric(names(influential)) ] <- 1
 outlier_info <- cleaned_stops_census %>% cbind(outlier = outlier) %>% filter(outlier == 1)
+
+outlier_info_sf <- st_as_sf(outlier_info)
+
+ggplot()+
+  geom_sf(data = census2023, fill = "white")+
+  geom_sf(data = outlier_info_sf, fill = "red")+
+  geom_sf(data = stops_sf_county, color = "green", size = 0.1, alpha = 0.3) +
+  labs(title = "Outliers Distribution") +
+  theme_void()
 
 cleaned_stops_census <- cleaned_stops_census %>% filter(!geoid %in% outlier_info$geoid)
 ```
@@ -81,19 +91,7 @@ for (col_name in columns_to_iterate) {
 }
 
 correlation_df <- bind_rows(correlation_values)
-#print(correlation_df)
 knitr::kable(correlation_df, format = "html")
-
-#number_school is good, native_hawaiian_and_other_pacific_islander_alone and american_indian_and_alaska_native_alone is uncertain
-
-# correlation_dataframe %>% 
-#   ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
-#   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
-#     geom_point(size = 2)+
-#   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
-#   theme_minimal()+
-#   geom_hline( yintercept = 0, color = "red")+
-#   scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native \n hawaiian \n other pacific islander ", "school", "job"))
 
 
 ## zoom in 
@@ -151,15 +149,6 @@ weekends_weekdays %>%
 
 ```{r echo=FALSE}
 used_ridership_all %>% 
-  group_by(nYear) %>%
-  mutate(Daily_load = n()) %>% 
-  ggplot(aes(x=nYear, y= Daily_load)) +
-  geom_line() +
-  geom_point() +
-  labs(x = "Year", y = "Daily load") +
-  theme_classic()
-
-used_ridership_all %>% 
   distinct(nYear,Route) %>% 
   group_by(nYear) %>% 
   mutate(nRoute = n()) %>% 
@@ -167,6 +156,17 @@ used_ridership_all %>%
   geom_line() +
   geom_point() +
   labs(x = "Year", y = "Number of routes", title = "Change in Number of Routes Provided") +
+  theme_classic()
+
+used_ridership_all %>%
+  group_by(nYear, rte_class) %>%
+  summarise(cnt = n_distinct(Route)) %>% 
+  filter(rte_class != "Support") %>% 
+  ggplot(aes(x = nYear, y = cnt)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~rte_class, labeller = labeller(rte_class = c("CommExp" = "Commuter Express", "CommRai" = "Commuter Rail", "CoreLoc" = "Core Local", "SuburbL" = "Suburb Local"))) +
+  labs(x = "Year", y = "number of routes", title = "Number of Route Change Across Route Types") +
   theme_classic()
 ```
 
