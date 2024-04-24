@@ -10,6 +10,7 @@ library(stats)
 library(janitor)
 library(animation)
 library(magick)
+library(mapview)
 
 # import data
 rider_23 <- read.csv("../data/ridership_2023.csv")
@@ -124,4 +125,7 @@ census_work <- left_join(stops_census_join_sum, WAC_clean, by = "GEOID")
 stops_census_join_sum <- census_work %>% 
   rename("total_jobs" = "C000") %>% 
   na.omit()
+
+#################### final data
+cleaned_stops_census <- clean_names(stops_census_join_sum)
 

@@ -1,0 +1,105 @@
+---
+title: "Public Transportation Accessibility in Twin Cities"
+author: "Tina Chen, Shirley Jiang, Cynthia Zhang"
+date: "`r format(Sys.Date(),'%e %B, %Y')`"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r, echo = FALSE, results = FALSE, message = FALSE, warning=FALSE}
+source('cleaning.R')
+```
+
+## Introduction
+
+
+## Motivation
+
+## Data Resource
+
+## Demographic and Stops Distribution
+
+```{r}
+m <- list()
+for (I in 1:9) {
+  m[[I]] <- mapview(census2023, zcol = name[I],legend = TRUE,layer.name = name[I])
+}
+
+do.call(leafsync::sync, c(m[1:9], list(ncol = 3)))
+```
+
+
+```{r echo=FALSE}
+stops_census_join_sum
+cleaned_stops_census
+
+columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone", "number_school", "total_jobs")
+
+
+
+correlation_values <- vector("list", length = 9)
+
+
+for (col_name in columns_to_iterate) {
+# calculate correlation values
+  cor_value <- cor(cleaned_stops_census[[col_name]], cleaned_stops_census$number_of_stops, use = "complete.obs")
+# confidence intervals
+  mod_formula_str <- str_c("number_of_stops", "~", col_name)
+  mod_form <- as.formula(mod_formula_str)
+  mod <- lm(mod_form, data = cleaned_stops_census)
+  ci <- confint(mod, level = 0.95)
+# table of data
+  correlation_values[[col_name]] <- tibble(
+    variable = col_name,
+    slope = mod$coefficients[variable],
+    ci_lower = ci[variable, "2.5 %"],
+    ci_upper = ci[variable, "97.5 %"]
+
+  )
+}
+
+correlation_dataframe <- bind_rows(correlation_values)
+
+correlation_dataframe
+
+#number_school is good, native_hawaiian_and_other_pacific_islander_alone and american_indian_and_alaska_native_alone is uncertain
+correlation_dataframe %>% 
+  ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
+    geom_point(size = 2)+
+  labs(x = "Strength of Different Variables in Relation to Number of Stops")+
+  theme_minimal()+
+  geom_hline( yintercept = 0, color = "red")+
+  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", "american indian \n alaska native ", "native \n hawaiian \n other pacific islander ", "school", "job"))
+
+
+## zoom in 
+correlation_dataframe[-c(6,7,8),] %>% 
+  ggplot(aes(x = factor(variable, level = correlation_dataframe$variable), y = slope))+
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2)+
+    geom_point(size = 2)+
+  labs(x = "Strength of Different Variables in Relation to Number of Stops")+
+  theme_minimal()+
+  geom_hline( yintercept = 0, color = "red")+
+  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", " total job"))
+
+```
+
+There isn't enough information we can extract from the map plot, although they are quite visually appealing. To gain a deeper understanding of how each factor influences the total number of stops per tract, we build 9 linear regression models. From these models, we obtained coefficients for each factor along with their 95% confidence intervals. We then created visualizations to better illustrate these results.
+
+Based on the plot, we observe a positive correlation between the number of schools and the number of stops. To be more specific, we are 95% confident that adding an additional school in a tract would result in 4-7 more bus stops. The confidence interval bar crosses 0 for Native Hawaiian and Other Pacific Islander, indicating uncertainty regarding the correlation.
+
+Zooming in further, we find that population, White alone, Black or African American, and total jobs all have a positive correlation, while median income has a negative correlation. Regarding Asian, once again, since its confidence interval crosses 0, we are uncertain about its correlation.
+
+
+### Overview
+
+## Pre-Covid and Post-Covid Comparison
+
+### Ridership
+
+### Route
+
+## Conclusion
