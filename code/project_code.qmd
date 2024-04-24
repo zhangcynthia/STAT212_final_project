@@ -86,11 +86,6 @@ do.call(leafsync::sync, c(m[1:9], list(ncol = 3)))
 
 ```
 
-
-
-
-
-
 #### scatter plot
 
 ```{r warning=FALSE}
@@ -135,7 +130,6 @@ for(i in 3:7){
 
 ```
 
-
 ```{r number of job, message=FALSE}
 job_stops %>% 
   ggplot() +
@@ -152,7 +146,6 @@ job_stops %>%
   theme_classic()
 ```
 
-
 ### Overview and Covid comparison
 
 ```{r demand}
@@ -166,7 +159,6 @@ used_ridership_all %>%
   labs(x = "Year", y = "Total Riders")
 ```
 
-
 ```{r weekday vs weekend}
 # 2 comparisons included: weekday vs weekend, and among each year
 weekends_weekdays %>% 
@@ -177,9 +169,7 @@ weekends_weekdays %>%
   labs(x = "Year", y = "Total Riders")
 ```
 
-
 ```{r RouteType analysis}
-
 used_ridership_all %>% filter(!(rte_class %in% c("CommRai","SuburbL","Support"))) %>% 
   group_by(nYear, rte_class) %>%
   mutate(Total_Riders = sum(Total_Riders,na.rm = TRUE)) %>% 
@@ -225,7 +215,6 @@ used_ridership_all %>%
 # Correlation Graph of All Variables:
 
 ```{r}
-cleaned_stops_census <- clean_names(stops_census_join_summ)
 # correlation <- function(df, var) {
 #   cor_value <- cor(df[[var]], df$number_of_stops, use = "complete.obs")
 #   return(cor_value)
@@ -282,12 +271,6 @@ correlation_dataframe[c(-6,-7),] %>%
 ```
 
 
-
-
-```{r}
-cleaned_stops_census <- clean_names(stops_census_join_summ)
-```
-
 # Identifying the Outliers:
 
 ```{r}
@@ -304,7 +287,7 @@ par(mfrow = c(2, 2))
 plot(model)
 
 cooksD <- cooks.distance(model)
-influential <- cooksD[(cooksD > (10 * mean(cooksD, na.rm = TRUE)))]
+influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
 as.numeric(names(influential)) 
 outlier <- rep(0, cleaned_stops_census%>% nrow() )
 outlier[as.numeric(names(influential)) ] <- 1
@@ -312,7 +295,7 @@ outlier_info <- cleaned_stops_census %>% cbind(outlier = outlier) %>% filter(out
 
 outlier_info_sf <- st_as_sf(outlier_info)
 
-
+cleaned_stops_census %>% filter(!geoid %in% outlier_info$geoid)
 # We see that 22 tract have a Cook’s Distance greater than 3x the mean.
 
 # how many sd from the linear regression because of unit difference
