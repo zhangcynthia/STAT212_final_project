@@ -339,7 +339,8 @@ outliers_demographic_pc %>%
 
 > Tract 251 is one the largest tract sizes which might explain partly why it has so many bus stops. However, another reason might be because Mall of America is located within this tract which prompts there to be more public transportation around this area to get to the Mall as it is a major destination within the Twin Cities.
 
-![Tract 251](../image/tract%20251.png) \> Tract 342.01 is downtown St. Paul. Similar to the city cases located above, downtown St. Paul would have a characteristically higher number of bus stops to allow citygoers a more convenient way to get downtown or move around downtown. Once again, less people tend to live downtown but rather in the areas around.
+![Tract 251](../image/tract%20251.png) \
+> Tract 342.01 is downtown St. Paul. Similar to the city cases located above, downtown St. Paul would have a characteristically higher number of bus stops to allow citygoers a more convenient way to get downtown or move around downtown. Once again, less people tend to live downtown but rather in the areas around.
 
 ![Tract 342.01](../image/tract%20342.01.png)
 
