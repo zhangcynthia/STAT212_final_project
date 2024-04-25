@@ -153,7 +153,7 @@ correlation_df[8,] %>%
   labs(x = "Strength of Different Variables in Relation to Number of Stops")+
   theme_minimal()+
   geom_hline( yintercept = 0, color = "red")+
-  scale_x_discrete(label = c("population","median \n income", "white \n alone", "black or \n african american", "asian ", " total job"))
+  scale_x_discrete(label = "number of school")
 ```
 
 To gain a deeper understanding of how each factor influences the total number of stops per tract, we build 7 linear regression models. From these models, we obtained coefficients for each factor along with their 95% confidence intervals. We then created visualizations to better illustrate these results.
@@ -213,7 +213,7 @@ used_ridership_all %>%
   ggplot(aes(x = nYear, y = cnt)) +
   geom_point() +
   geom_line() +
-  facet_wrap(~rte_class, labeller = labeller(rte_class = c("CommExp" = "Commuter Express", "CommRai" = "Commuter Rail", "CoreLoc" = "Core Local", "SuburbL" = "Suburb Local"))) +
+  facet_wrap(~rte_class, labeller = labeller(rte_class = c("BRT" = "BRT", "CommExp" = "Commuter Express", "CommRai" = "Commuter Rail", "CoreLoc" = "Core Local", "SuburbL" = "Suburb Local", "LRT" = "LRT"))) +
   labs(x = "Year", y = "number of routes", title = "Number of Route Change Across Route Types") +
   theme_classic()
 ```
