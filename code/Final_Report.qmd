@@ -16,9 +16,20 @@ source('cleaning.R')
 
 ## Motivation
 
-## Data Resource
+## Data Resources
 
-In this project, we are using multiple data sources. We extract the data of daily
+In this project, we are using multiple data sources： 
+
+- We extracted the data of daily ridership from 2019 to 2023 and the data of all the existing bus stop locations from **Metropolitan Council internal databases** "db_prod_serv_hist" and "ScheduleDB_Current" respectively.
+
+-   The census tract locations and demographic variables, here we are using population, median income, and race, were extracted from the **2022 ACS (American Community Service) 1-year data set** collected by Census Bureau.
+
+-   The information of schools in each census tract was collecting from the **School Program Location data set** from the Minnesota Geospatial Commons website, collected by Minnesota Department of Education.
+
+-   The number of jobs in each census tract is getting from **Workplace Area Characteristics (WAC) year 2021 data file** in Longitudinal Employer-Household Dynamics (LEHD) data structure collected by Census Bureau. In this project, we are using the "Total number of jobs" variable.
+
+For the data cleaning process, we filtered all the data sets to the target regions, Ramesy County and Hennepin County. Then, we joined the bus stop locations to the census data to count the number of bus stop in each tract. All the other data sets share the same identifier GEOID (unique id for each census tract), so we are allowed to join those data together for further development.
+
 
 ## Demographic and Stops Distribution
 
@@ -31,7 +42,6 @@ ggplot() +
   theme_void() +
   labs(title = "Bus Stops Distribution")
 ```
-
 
 ```{r echo=FALSE}
 New_name <- c("Population","Median Income", "White ", "Black <br> or African american", "American Indian & <br> Alaska Native ", "Asian ", "Native Hawaiian \n Other Pacific Islander ", "School", "Job")
@@ -74,7 +84,6 @@ ggplot()+
 
 cleaned_stops_census <- cleaned_stops_census %>% filter(!geoid %in% outlier_info$geoid)
 ```
-
 
 ```{r echo=FALSE, warning=FALSE}
 columns_to_iterate <- c("population", "median_income", "white_alone", "black_or_african_american_alone", "asian_alone", "american_indian_and_alaska_native_alone", "native_hawaiian_and_other_pacific_islander_alone", "number_school", "total_jobs")
@@ -128,7 +137,6 @@ To gain a deeper understanding of how each factor influences the total number of
 Based on the first plot, we observe a positive correlation between the number of schools and the number of stops. To be more specific, we are 95% confident that adding an additional school in a tract would result in 4-7 more bus stops.
 
 According for the second plot, we find that population, White alone, Black or African American, and total jobs all have a positive correlation, while median income has a negative correlation. Regarding Asian, since its confidence interval crosses 0, we are uncertain about its correlation.
-
 
 ## Pre-Covid and Post-Covid Comparison
 
@@ -186,7 +194,7 @@ used_ridership_all %>%
   theme_classic()
 ```
 
-Then, we look into the supply side of public transportation. By looking at the total number of routes provided, we observe a sharp fall from year 2020 to year 2021 and the number is keep decreasing until now. This shows that, as the riders choose not to ride the public transportation, the company was also shutting down the routes. It could because the lack of riders and drivers. Even though the pandemic has past, the number of routes hasn't recovered. 
+Then, we look into the supply side of public transportation. By looking at the total number of routes provided, we observe a sharp fall from year 2020 to year 2021 and the number is keep decreasing until now. This shows that, as the riders choose not to ride the public transportation, the company was also shutting down the routes. It could because the lack of riders and drivers. Even though the pandemic has past, the number of routes hasn't recovered.
 
 Then we dig into each type of routes respectively. Metro Transit has classified all the routes into several types. BRT is the short for bus rapid transit, Commuter Express are the routes for commuting only during weekdays, Commuter Rail is specific for the North Star Line, Core Local are the major routes distributed around the center of cities, LRT is the short for light rail transit which specific for Green Line and Blue Line, and Suburb Local are the routes located at the edge of cities. From the plots above, the number of Commuter Express routes has a sharp drop during the pandemic and the number of Core Local routes also have a significant decrease, while the other types of routes are relatively stable. The visualizations above shows that people who do public transportation commuting and who live close to cities centers have been affected the most.
 
