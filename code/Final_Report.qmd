@@ -193,7 +193,7 @@ weekends_weekdays %>%
 
 If we looking at the ridership in weekdays and weekends respectively, we can observe that during the pandemic, the ridership in weekdays has been greater affected as that in weekends stayed relatively stable. This is consistent with our previous finding that people who take public transportation to work is the group that have been affected the most.
 
-### Route (Supply)
+### Routes (Supply)
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 used_ridership_all %>% 
@@ -220,7 +220,7 @@ used_ridership_all %>%
 
 Then, we look into the supply side of public transportation. By looking at the total number of routes provided, we observe a sharp fall from year 2020 to year 2021 and the number is keep decreasing until now. This shows that, as the riders choose not to ride the public transportation, the company was also shutting down the routes. It could because the lack of riders and drivers. Even though the pandemic has past, the number of routes hasn't recovered.
 
-Then we dig into each type of routes respectively. Metro Transit has classified all the routes into several types. BRT is the short for bus rapid transit, Commuter Express are the routes for commuting only during weekdays, Commuter Rail is specific for the North Star Line, Core Local are the major routes distributed around the center of cities, LRT is the short for light rail transit which specific for Green Line and Blue Line, and Suburb Local are the routes located at the edge of cities. From the plots above, the number of Commuter Express routes has a sharp drop during the pandemic and the number of Core Local routes also have a significant decrease, while the other types of routes are relatively stable. The visualizations above shows that people who do public transportation commuting and who live close to cities centers have been affected the most.
+In the next plot, we dig into the types of routes respectively. Metro Transit has classified all the routes into several types. BRT is the short for bus rapid transit, Commuter Express are the routes for commuting only during weekdays, Commuter Rail is specific for the North Star Line, Core Local are the major routes distributed around the center of cities, LRT is the short for light rail transit which specific for Green Line and Blue Line, and Suburb Local are the routes located at the edge of cities. From the plots above, the number of Commuter Express routes has a sharp drop during the pandemic and the number of Core Local routes also have a significant decrease, while the other types of routes are relatively stable. The visualizations above shows that people who do public transportation commuting and who live close to cities centers have been affected the most.
 
 ## Limitations
 
