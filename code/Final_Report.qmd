@@ -14,7 +14,13 @@ source('cleaning.R')
 
 ## Introduction
 
-## Motivation
+We were motivated to investigate the accessibility of public transportation within the Twin Cities area with the MetroTransit, being heavily influenced by concerns around equality. A large motivation of every community when they decide to invest heavily in public transportation infrastructure is to give lower-income communities the ability to travel around even when they do not own cars of their own, give individuals with disabilities the opportunity to continue their life, so if the public transportation has issues that pose as challenges for accessibility then that devalues the purpose of public transportation.
+
+With our first research question, we researched whether there were more bus stops in locations based on income and population. The assumption was that there would be more stops in areas with higher population densities and areas that were lower income because those are the communities that would theoretically utilize these services the most. We were also interested in narrowing this broad research question about the urban population to looking into racial demographics of the Twin Cities areas to see if the most marginalized communities were fully served. However, this idea changed as there weren’t enough POC groups within the Twin Cities area to create a compelling case. We could then conclude whether public transit was accessible to younger people as they also rely on public transportation because many can’t drive.
+
+The next question we wanted to understand was related to the ridership changes, especially after the COVID-19 pandemic. It is interesting to observe how the ridership has changed after a pandemic where social distancing and quarantining were so important. This is another indirect method of seeing the accessibility of public transportation because you can learn whether or not initiatives for greater accessibility have been ruled back after the pandemic. To answer these questions, in addition to tracking how daily ridership has varied throughout the years, we narrowed it down by delving into how ridership has changed from weekends to weekdays and different transit lines.
+
+Lastly, we wished to look into the job accessibility along the public transit routes. A major use of public transportation would be to serve commuters and community members in all areas of their lives - which jobs are a big part of. If most jobs are located too far from public transit lines then that would defeat a main purpose of the service.
 
 ## Data Resource
 
@@ -55,7 +61,7 @@ cleaned_stops_census <- clean_names(stops_census_join_sum)
 
 model <- lm(number_of_stops ~ population+median_income + white_alone + black_or_african_american_alone+asian_alone + american_indian_and_alaska_native_alone + native_hawaiian_and_other_pacific_islander_alone + total_jobs, cleaned_stops_census)
 
-par(mfrow = c(2, 2))
+# par(mfrow = c(2, 2))
 
 cooksD <- cooks.distance(model)
 influential <- cooksD[(cooksD > (3 * mean(cooksD, na.rm = TRUE)))]
@@ -74,6 +80,24 @@ ggplot()+
 
 cleaned_stops_census <- cleaned_stops_census %>% filter(!geoid %in% outlier_info$geoid)
 ```
+To construct a robust regression model and better understand the relationship between bus stop distribution and its influential factors, we employed statistical tools to filter out outliers. We use Cook's distance, a metric that measure the impact of individual observations on the regression coefficients. By computing Cook's distance for each observation in the linear regression model, we identified influential data points. Those observations with Cook's distance exceeding three times the mean Cook's distance were flagged as influential, indicating they potentially exert disproportionate influence on the model's outcomes. We consider these influential observations as outliers due to their significant impact. Visualizing these outliers on a map allows us to spatially understand their distribution and potentially uncover patterns or anomalies in the data. 
+
+
+We analyzed four of the outliers here:
+
+> Tract 1261.02 is located near the U of M campus in Minneapolis which supports the hypothesis that there would be more stops (greater access to public transportation) for individuals who likely use it more - students. It also has the largest population size out of our narrowed-down list. This would also likely be a viable area for professionals to reside away from downtown Minneapolis but still in commuting distance to their jobs.
+
+
+
+> Tract 265.14 is located in Plymouth, MN a large suburb near the Twin Cities. That explains their relatively high median income levels. This tract is also mainly where the bus stops are located to get around the suburb, explaining the high level of stops.
+
+
+
+> Tract 1044 is located in central Minneapolis which also makes intuitive sense why it is in the top three for number of stops. There is often more accessibility located in the downtown areas of a city to provide ongoers an easy way to move around. There is likely less population because downtowns tend to be where businesses are located, so many workers probably commute to work from other locations.
+
+
+
+> Tract 251 is one the largest tract sizes which might explain partly why it has so many bus stops. However, another reason might be because Mall of America is located within this tract which prompts there to be more public transportation around this area to get to the Mall as it is a major destination within the Twin Cities.
 
 
 ```{r echo=FALSE, warning=FALSE}
@@ -192,4 +216,16 @@ Then we dig into each type of routes respectively. Metro Transit has classified 
 
 ## Limitations
 
+A large limitation with our research stemmed from the fact that we are drawing on indirect data to make conclusions on equality, which we measured through ridership. Our ridership data didn't include demographic and income data of the riders using the service, so when studying ridership profiles to determine equity, we had to change the research question with data that we did have - namely, data on the average income and demographic makeup of tracts in the Twin Cities area. This way we could indirectly measure the public transit equality through accessibility for marginalized communities based on where the poorest/most diverse tracts were. However, there are always outliers within these tracts who might not be accounted for because we are focusing on the averages for incomes and demographic who might not be serviced as well because they live in a wealthy/less diverse area. This same issue of indirectness was also present with the analysis on the jobs prevalence in the Twin Cities.
+
+Additionally, the lack of data on timing of each ride was another limitation because we had initially wanted to observe effects of public transit delays because the timing might pose a challenge for riders and cause them to steer away from riding public transit which can become a question of accessibility when preventing people with time-sensitive responsibilities from riding. Within that same data set, we were also not able to observe specifically what the ridership levels looked like for stops. This is something that would have come in handy when understanding the impact of certain lines shutting down after COVID and how that might have affected accessibility.
+
 ## Conclusion
+
+Our analysis of public transportation in the Twin Cities area reveals important insights into transit usage, ridership changes, and the impact of demographics and economics. We aimed to see how public transit serves diverse communities, especially those facing socioeconomic challenges and disabilities.
+
+We found that bus stops are often located where there are more people and lower incomes, aligning with the goal of serving marginalized communities. However, there are exceptions, like affluent suburbs with many bus stops.
+
+Ridership dropped significantly during the COVID-19 pandemic, especially on weekdays and commuter routes, and hasn't fully recovered. We also noted limitations in our data, such as indirect measures and lack of detail.To improve public transportation equity, policymakers and transit agencies should invest in underserved areas, improve service reliability, and address barriers faced by marginalized groups.
+
+Overall, by refining our understanding of transit accessibility and addressing disparities, we can create a more inclusive transportation system for everyone in the Twin Cities and beyond.
